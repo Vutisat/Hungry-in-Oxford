@@ -20,9 +20,9 @@ public class HioGui extends JPanel {
 		int buttonHeight = btn1.getPreferredSize().height;
 		int buttonWidth = btn1.getPreferredSize().width;
 		btn1.setBounds(0, 50, buttonWidth, buttonHeight);
-		btn2 = new JButton("View Ratings");
+		btn2 = new JButton("View Restuarants by food category");
 		btn2.setBounds(170, 50, buttonWidth, buttonHeight);
-		btn3 = new JButton("Search");
+		btn3 = new JButton("Back");
 		btn3.setBounds(340, 50, buttonWidth, buttonHeight);
 		this.add(btn1);
 		this.add(btn2);
