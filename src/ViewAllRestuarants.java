@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -6,21 +7,23 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ViewRestuarants extends JPanel {
+public class ViewAllRestuarants extends JPanel {
 
+	static JFrame frame;
 	private JButton btn1;
 	JDBC db = new JDBC();
 
-	public ViewRestuarants() {
+	public ViewAllRestuarants() {
 		super();
-		this.setLayout(null);
+		FlowLayout experimentLayout = new FlowLayout();
+		this.setLayout(experimentLayout);
 
 		// set up the buttons
 		btn1 = new JButton("Back");
 		int buttonHeight = btn1.getPreferredSize().height;
 		int buttonWidth = btn1.getPreferredSize().width;
 		btn1.setBounds(0, 50, buttonWidth, buttonHeight);
-		
+
 		this.add(btn1);
 
 		ButtonResponder br = new ButtonResponder();
@@ -35,20 +38,26 @@ public class ViewRestuarants extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource() == btn1) {
-				//db.main(null);
-				System.out.println("Press 1");
-				//JFrame viewR = new JFrame("View by Resturants");
+				// db.main(null);
+				HioGui hg = new HioGui();
+				hg.main(null);
+
+				CloseFrame();
 			}
 			repaint();
 		}
 
 	}
 
-	public void main(String[] args) {
+	private void CloseFrame() {
+		frame.setVisible(false);
+	}
 
-		JFrame frame = new JFrame("Hungry In Oxford Interface");
+	public static void main(String[] args) {
+
+		frame = new JFrame("Hungry In Oxford Interface");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new ViewRestuarants());
+		frame.add(new ViewAllRestuarants());
 		frame.setBounds(300, 400, 500, 500);
 		frame.setBackground(new Color(100, 0, 20));
 		frame.setLocationRelativeTo(null);

@@ -7,33 +7,28 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class HioGui extends JPanel {
+public class ViewByCategory extends JPanel {
+
 	static JFrame frame;
-	private JButton btn1, btn2;
+	private JButton btn1;
 	JDBC db = new JDBC();
 
-	public HioGui() {
+	public ViewByCategory() {
 		super();
 		FlowLayout experimentLayout = new FlowLayout();
 		this.setLayout(experimentLayout);
 
 		// set up the buttons
-		btn1 = new JButton("View All Resturants");
+		btn1 = new JButton("Back");
 		int buttonHeight = btn1.getPreferredSize().height;
 		int buttonWidth = btn1.getPreferredSize().width;
 		btn1.setBounds(0, 50, buttonWidth, buttonHeight);
-		btn2 = new JButton("View Restuarants by food category");
-		btn2.setSize(50, 20);
-		btn2.setBounds(170, 50, buttonWidth, buttonHeight);
+
 		this.add(btn1);
-		this.add(btn2);
 
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
 
-		ButtonResponder br2 = new ButtonResponder();
-		btn2.addActionListener(br2);
-		
 		this.setVisible(true);
 	}
 
@@ -44,17 +39,8 @@ public class HioGui extends JPanel {
 
 			if (e.getSource() == btn1) {
 				// db.main(null);
-				ViewAllRestuarants vr = new ViewAllRestuarants();
-				vr.main(null);
-				vr.setVisible(true);
-
-				CloseFrame();
-			}
-			
-			if (e.getSource() == btn2) {
-				ViewByCategory br = new ViewByCategory();
-				br.main(null);
-				br.setVisible(true);
+				HioGui hg = new HioGui();
+				hg.main(null);
 
 				CloseFrame();
 			}
@@ -64,14 +50,14 @@ public class HioGui extends JPanel {
 	}
 
 	private void CloseFrame() {
-		frame.dispose();
+		frame.setVisible(false);
 	}
 
 	public static void main(String[] args) {
 
 		frame = new JFrame("Hungry In Oxford Interface");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new HioGui());
+		frame.add(new ViewByCategory());
 		frame.setBounds(300, 400, 500, 500);
 		frame.setBackground(new Color(100, 0, 20));
 		frame.setLocationRelativeTo(null);
