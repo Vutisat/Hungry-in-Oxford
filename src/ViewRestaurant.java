@@ -7,13 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ViewByCategory extends JPanel {
+public class ViewRestaurant extends JPanel {
 
 	static JFrame frame;
 	private JButton btn1;
 	JDBC db = new JDBC();
 
-	public ViewByCategory() {
+	public ViewRestaurant() {
 		super();
 		FlowLayout experimentLayout = new FlowLayout();
 		this.setLayout(experimentLayout);
@@ -50,15 +50,14 @@ public class ViewByCategory extends JPanel {
 	}
 
 	private void CloseFrame() {
-		frame.dispose();
 		frame.setVisible(false);
 	}
 
 	public static void main(String[] args) {
 
-		frame = new JFrame("View by food category");
+		frame = new JFrame("Restaurant");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new ViewByCategory());
+		frame.add(new ViewRestaurant());
 		frame.setBounds(300, 400, 500, 500);
 		frame.setBackground(new Color(100, 0, 20));
 		frame.setLocationRelativeTo(null);

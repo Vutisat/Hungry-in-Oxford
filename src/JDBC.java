@@ -16,7 +16,7 @@ public class JDBC {
 		try {
 			// create a database connection
 			connection = DriverManager
-					.getConnection("jdbc:sqlite:firstexam.db");
+					.getConnection("jdbc:sqlite:Project.db");
 			Statement statement = connection.createStatement();
 			statement.setQueryTimeout(30); // set timeout to 30 sec.
 
@@ -24,14 +24,8 @@ public class JDBC {
 
 			Scanner keyboard = new Scanner(System.in);
 
-			int companyId;
-
-			System.out.println("Please enter the cid for the company: ");
-			companyId = keyboard.nextInt();
-
 			ResultSet rs = statement
-					.executeQuery("SELECT cname FROM Company WHERE cid ="
-							+ companyId + ";");
+					.executeQuery("SELECT Name FROM Restaurant");
 			while (rs.next()) {
 				// read the result set
 				System.out.println("Company Name = " + rs.getString("cname"));

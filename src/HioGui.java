@@ -69,7 +69,7 @@ public class HioGui extends JPanel {
 
 	public static void main(String[] args) {
 
-		frame = new JFrame("Hungry In Oxford Interface");
+		frame = new JFrame("Hungry In Oxford");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new HioGui());
 		frame.setBounds(300, 400, 500, 500);

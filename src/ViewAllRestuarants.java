@@ -50,12 +50,13 @@ public class ViewAllRestuarants extends JPanel {
 	}
 
 	private void CloseFrame() {
+		frame.dispose();
 		frame.setVisible(false);
 	}
 
 	public static void main(String[] args) {
 
-		frame = new JFrame("Hungry In Oxford Interface");
+		frame = new JFrame("View all restaurants");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new ViewAllRestuarants());
 		frame.setBounds(300, 400, 500, 500);
