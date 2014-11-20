@@ -1,8 +1,8 @@
 Hungry-in-Oxford
 ================
 
-DB Schema so Craig doesn't have to look in his email anymore
----------
+### DB Schema so Craig doesn't have to look in his email anymore ###
+
     CREATE TABLE Restaurant (
     	Name VARCHAR(50) NOT NULL,
     	Type VARCHAR(50),
