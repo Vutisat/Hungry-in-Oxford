@@ -30,6 +30,14 @@ public class ViewByCategory extends JPanel {
 		btn1.addActionListener(br);
 
 		this.setVisible(true);
+		
+		frame = new JFrame("View by food category");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(this);
+		frame.setBounds(300, 400, 500, 500);
+		frame.setBackground(new Color(100, 0, 20));
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 
 	public class ButtonResponder implements ActionListener {
@@ -40,7 +48,7 @@ public class ViewByCategory extends JPanel {
 			if (e.getSource() == btn1) {
 				// db.main(null);
 				HioGui hg = new HioGui();
-				hg.main(null);
+				//hg.main(null);
 
 				CloseFrame();
 			}
@@ -54,7 +62,7 @@ public class ViewByCategory extends JPanel {
 		frame.setVisible(false);
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 
 		frame = new JFrame("View by food category");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,6 +72,6 @@ public class ViewByCategory extends JPanel {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 
-	}
+	}*/
 
 }
