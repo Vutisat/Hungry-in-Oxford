@@ -30,6 +30,24 @@ public class ViewRestaurant extends JPanel {
 
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
+		
+		ResultSet rs = null;
+		try	{
+			db = new JDBC();
+			System.out.println(str);
+			rs = db.getRestaurantFood(str);
+			
+			while(rs.next()){
+				String food = rs.getString("name");
+				JButton btnx = new JButton(food);
+				btnx.setBounds(0, 50, buttonWidth, buttonHeight);
+				btnx.addActionListener(br);
+				this.add(btnx);
+			}
+		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
+		db.closeDb();
+
+		this.setVisible(true);
 
 		//this.setVisible(true);
 		
@@ -40,39 +58,6 @@ public class ViewRestaurant extends JPanel {
 		frame.setBackground(new Color(100, 0, 20));
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-	}
-	
-	public ViewRestaurant() {
-		super();
-		FlowLayout experimentLayout = new FlowLayout();
-		this.setLayout(experimentLayout);
-
-		// set up the buttons
-		btn1 = new JButton("Back");
-		int buttonHeight = btn1.getPreferredSize().height;
-		int buttonWidth = btn1.getPreferredSize().width;
-		btn1.setBounds(0, 50, buttonWidth, buttonHeight);
-		this.add(btn1);
-
-		ButtonResponder br = new ButtonResponder();
-		btn1.addActionListener(br);
-		
-		ResultSet rs = null;
-		try	{
-			db = new JDBC();
-			rs = db.getAllRestaurants();
-			
-			while(rs.next()){
-				String str = rs.getString("name");
-				JButton btnx = new JButton(str);
-				btnx.setBounds(0, 50, buttonWidth, buttonHeight);
-				btnx.addActionListener(br);
-				this.add(btnx);
-			}
-		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
-		db.closeDb();
-
-		this.setVisible(true);
 	}
 
 	public class ButtonResponder implements ActionListener {
