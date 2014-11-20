@@ -29,9 +29,9 @@ public class JDBC {
 		try {
 			rs = this.statement.executeQuery("SELECT Name FROM Restaurant");
 		
-			while(rs.next())	{
-				System.out.println("Restaurant Name = " + rs.getString("name"));
-			}
+			//while(rs.next())	{
+			//	System.out.println("Restaurant Name = " + rs.getString("name"));
+			//}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
