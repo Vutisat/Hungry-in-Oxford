@@ -34,7 +34,15 @@ public class HioGui extends JPanel {
 		ButtonResponder br2 = new ButtonResponder();
 		btn2.addActionListener(br2);
 		
-		this.setVisible(true);
+		this.setVisible(true); //I don't think these are necessary since we're having each class have its own jframe
+		
+		frame = new JFrame("Hungry In Oxford");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(this);
+		frame.setBounds(300, 400, 500, 500);
+		frame.setBackground(new Color(100, 0, 20));
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 
 	public class ButtonResponder implements ActionListener {
@@ -45,7 +53,7 @@ public class HioGui extends JPanel {
 			if (e.getSource() == btn1) {
 				// db.main(null);
 				ViewAllRestuarants vr = new ViewAllRestuarants();
-				vr.main(null);
+				//vr.main(null);
 				vr.setVisible(true);
 
 				CloseFrame();
@@ -53,7 +61,7 @@ public class HioGui extends JPanel {
 			
 			if (e.getSource() == btn2) {
 				ViewByCategory br = new ViewByCategory();
-				br.main(null);
+				//br.main(null);
 				br.setVisible(true);
 
 				CloseFrame();
@@ -68,15 +76,7 @@ public class HioGui extends JPanel {
 	}
 
 	public static void main(String[] args) {
-
-		frame = new JFrame("Hungry In Oxford");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new HioGui());
-		frame.setBounds(300, 400, 500, 500);
-		frame.setBackground(new Color(100, 0, 20));
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-
+		HioGui start = new HioGui();
 	}
 
 }
