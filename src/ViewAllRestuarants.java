@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,23 +19,29 @@ public class ViewAllRestuarants extends JPanel {
 		super();
 		FlowLayout experimentLayout = new FlowLayout();
 		this.setLayout(experimentLayout);
-		try	{
-			db = new JDBC();
-			db.getAllRestaurants();
-		}catch(Exception e){System.out.println("Error");};
+		
 		// set up the buttons
 		btn1 = new JButton("Back");
 		int buttonHeight = btn1.getPreferredSize().height;
 		int buttonWidth = btn1.getPreferredSize().width;
 		btn1.setBounds(0, 50, buttonWidth, buttonHeight);
-		
-		
-
 		this.add(btn1);
-
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
 
+		//add restaruant buttons
+		ResultSet rs = null;
+		try	{
+			db = new JDBC();
+			rs = db.getAllRestaurants();
+			
+			while(rs.next()){
+				JButton btnx = new JButton(rs.getString("name"));
+				btnx.setBounds(0, 50, buttonWidth, buttonHeight);
+				this.add(btnx);
+			}
+		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
+		
 		this.setVisible(true);
 	}
 
