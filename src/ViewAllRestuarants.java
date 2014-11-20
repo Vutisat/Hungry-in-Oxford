@@ -36,12 +36,14 @@ public class ViewAllRestuarants extends JPanel {
 			rs = db.getAllRestaurants();
 			
 			while(rs.next()){
-				JButton btnx = new JButton(rs.getString("name"));
+				String str = rs.getString("name");
+				JButton btnx = new JButton(str);
 				btnx.setBounds(0, 50, buttonWidth, buttonHeight);
+				btnx.addActionListener(br);
 				this.add(btnx);
 			}
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
-		
+		db.closeDb();
 		this.setVisible(true);
 	}
 
@@ -54,9 +56,13 @@ public class ViewAllRestuarants extends JPanel {
 				// db.main(null);
 				HioGui hg = new HioGui();
 				hg.main(null);
-
 				CloseFrame();
+			}else	{
+				System.out.println(e.getActionCommand());
+				ViewRestaurant vr = new ViewRestaurant(e.getActionCommand());
 			}
+			
+			
 			repaint();
 		}
 
