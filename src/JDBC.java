@@ -37,7 +37,7 @@ public class JDBC {
 	public ResultSet getRestaurantFood(String rname)	{
 		ResultSet rs = null;
 		try {
-			rs = this.statement.executeQuery("SELECT Name FROM FoodItems WHERE RName = " + rname );
+			rs = this.statement.executeQuery("SELECT Name FROM FoodItems WHERE RName = " + "\"" +rname + "\"" );
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
