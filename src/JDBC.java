@@ -6,22 +6,44 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class JDBC {
-	public Connection connection;
-	public Statement statement;
+	private Connection connection;
+	private Statement statement;
 	
-	public JDBC() throws Exception	{
-		Class.forName("org.sqlite.JDBC");
-		this.connection = DriverManager.getConnection("jdbc:sqlite:Project.db");
-		this.statement = connection.createStatement();
-		statement.setQueryTimeout(30);
+	//constructor establishes a connection with the db
+	public JDBC() {
+		try {
+			Class.forName("org.sqlite.JDBC");
+			this.connection = DriverManager.getConnection("jdbc:sqlite:Project.db");
+			this.statement = connection.createStatement();
+			statement.setQueryTimeout(30);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public ResultSet getAllRestaurants() throws Exception	{
-		ResultSet rs = this.statement.executeQuery("SELECT Name FROM Restaurant");
-		while(rs.next())	{
-			System.out.println("Restaurant Name = " + rs.getString("name"));
+	//returns a list of all restaurants
+	public ResultSet getAllRestaurants()	{
+		ResultSet rs = null;
+		try {
+			rs = this.statement.executeQuery("SELECT Name FROM Restaurant");
+		
+			while(rs.next())	{
+				System.out.println("Restaurant Name = " + rs.getString("name"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return rs;
+	}
+	
+	public void closeDb()	{
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args) throws ClassNotFoundException {
