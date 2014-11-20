@@ -6,14 +6,31 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class JDBC {
-
+	public Connection connection;
+	public Statement statement;
+	
+	public JDBC() throws Exception	{
+		Class.forName("org.sqlite.JDBC");
+		this.connection = DriverManager.getConnection("jdbc:sqlite:Project.db");
+		this.statement = connection.createStatement();
+		statement.setQueryTimeout(30);
+	}
+	
+	public ResultSet getAllRestaurants() throws Exception	{
+		ResultSet rs = this.statement.executeQuery("SELECT Name FROM Restaurant");
+		while(rs.next())	{
+			System.out.println("Restaurant Name = " + rs.getString("name"));
+		}
+		return rs;
+	}
+	
 	public static void main(String[] args) throws ClassNotFoundException {
 
 		// load the sqlite-JDBC driver using the current class loader
-		Class.forName("org.sqlite.JDBC");
-
-		Connection connection = null;
-		try {
+		
+		
+		//Connection connection = null;
+		/*try {
 			// create a database connection
 			connection = DriverManager
 					.getConnection("jdbc:sqlite:Project.db");
@@ -42,6 +59,6 @@ public class JDBC {
 				// connection close failed.
 				System.err.println(e);
 			}
-		}
+		}*/
 	}
 }
