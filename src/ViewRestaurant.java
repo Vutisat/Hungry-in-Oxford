@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -55,6 +56,21 @@ public class ViewRestaurant extends JPanel {
 
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
+		
+		ResultSet rs = null;
+		try	{
+			db = new JDBC();
+			rs = db.getAllRestaurants();
+			
+			while(rs.next()){
+				String str = rs.getString("name");
+				JButton btnx = new JButton(str);
+				btnx.setBounds(0, 50, buttonWidth, buttonHeight);
+				btnx.addActionListener(br);
+				this.add(btnx);
+			}
+		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
+		db.closeDb();
 
 		this.setVisible(true);
 	}
