@@ -11,18 +11,23 @@ public class ViewAllRestuarants extends JPanel {
 
 	static JFrame frame;
 	private JButton btn1;
-	JDBC db = new JDBC();
+	JDBC db;
 
 	public ViewAllRestuarants() {
 		super();
 		FlowLayout experimentLayout = new FlowLayout();
 		this.setLayout(experimentLayout);
-
+		try	{
+			db = new JDBC();
+			db.getAllRestaurants();
+		}catch(Exception e){System.out.println("Error");};
 		// set up the buttons
 		btn1 = new JButton("Back");
 		int buttonHeight = btn1.getPreferredSize().height;
 		int buttonWidth = btn1.getPreferredSize().width;
 		btn1.setBounds(0, 50, buttonWidth, buttonHeight);
+		
+		
 
 		this.add(btn1);
 

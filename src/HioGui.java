@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 public class HioGui extends JPanel {
 	static JFrame frame;
 	private JButton btn1, btn2;
-	JDBC db = new JDBC();
+	JDBC db;
 
 	public HioGui() {
 		super();

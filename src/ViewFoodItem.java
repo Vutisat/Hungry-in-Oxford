@@ -11,7 +11,7 @@ public class ViewFoodItem extends JPanel {
 
 	static JFrame frame;
 	private JButton btn1;
-	JDBC db = new JDBC();
+	JDBC db;
 
 	public ViewFoodItem() {
 		super();
