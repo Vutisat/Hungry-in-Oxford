@@ -28,10 +28,16 @@ public class JDBC {
 		ResultSet rs = null;
 		try {
 			rs = this.statement.executeQuery("SELECT Name FROM Restaurant");
-		
-			//while(rs.next())	{
-			//	System.out.println("Restaurant Name = " + rs.getString("name"));
-			//}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public ResultSet getRestaurantFood(String rname)	{
+		ResultSet rs = null;
+		try {
+			rs = this.statement.executeQuery("SELECT Name FROM FoodItems WHERE RName = " + rname );
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
