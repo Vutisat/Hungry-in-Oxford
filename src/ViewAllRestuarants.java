@@ -44,7 +44,16 @@ public class ViewAllRestuarants extends JPanel {
 			}
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		db.closeDb();
+		
 		this.setVisible(true);
+		
+		frame = new JFrame("View all restaurants");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(this);
+		frame.setBounds(300, 400, 500, 500);
+		frame.setBackground(new Color(100, 0, 20));
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
 	}
 
 	public class ButtonResponder implements ActionListener {
@@ -53,16 +62,15 @@ public class ViewAllRestuarants extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 
 			if (e.getSource() == btn1) {
-				// db.main(null);
 				HioGui hg = new HioGui();
-				hg.main(null);
+				//hg.main(null);
 				CloseFrame();
 			}else	{
 				System.out.println(e.getActionCommand());
 				ViewRestaurant vr = new ViewRestaurant(e.getActionCommand());
+				//vr.main(null);
+				CloseFrame();
 			}
-			
-			
 			repaint();
 		}
 
@@ -73,7 +81,7 @@ public class ViewAllRestuarants extends JPanel {
 		frame.setVisible(false);
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 
 		frame = new JFrame("View all restaurants");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,6 +91,6 @@ public class ViewAllRestuarants extends JPanel {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 
-	}
+	}*/
 
 }
