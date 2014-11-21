@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class HioGui extends JPanel {
 	static JFrame frame;
@@ -75,7 +78,9 @@ public class HioGui extends JPanel {
 		frame.dispose();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
+		UIManager.installLookAndFeel("SeaGlass", "com.seaglasslookandfeel.SeaGlassLookAndFeel");
+        UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
 		HioGui start = new HioGui();
 	}
 
