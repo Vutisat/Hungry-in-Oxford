@@ -44,6 +44,17 @@ public class JDBC {
 		return rs;
 	}
 	
+	public ResultSet customQuery(String query)	{
+		ResultSet rs = null;
+		try {
+			rs = this.statement.executeQuery(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+		
+	}
+	
 	public void closeDb()	{
 		try {
 			connection.close();
