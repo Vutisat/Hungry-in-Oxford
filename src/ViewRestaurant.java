@@ -34,7 +34,6 @@ public class ViewRestaurant extends JPanel {
 		ResultSet rs = null;
 		try	{
 			db = new JDBC();
-			System.out.println(str);
 			rs = db.getRestaurantFood(str);
 			
 			while(rs.next()){

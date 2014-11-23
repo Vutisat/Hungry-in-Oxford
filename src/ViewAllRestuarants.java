@@ -66,7 +66,7 @@ public class ViewAllRestuarants extends JPanel {
 				//hg.main(null);
 				CloseFrame();
 			}else	{
-				System.out.println(e.getActionCommand());
+				//System.out.println(e.getActionCommand());
 				ViewRestaurant vr = new ViewRestaurant(e.getActionCommand());
 				//vr.main(null);
 				CloseFrame();
