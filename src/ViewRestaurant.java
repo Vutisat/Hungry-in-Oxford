@@ -25,9 +25,7 @@ public class ViewRestaurant extends JPanel {
 		int buttonHeight = btn1.getPreferredSize().height;
 		int buttonWidth = btn1.getPreferredSize().width;
 		btn1.setBounds(0, 50, buttonWidth, buttonHeight);
-
 		this.add(btn1);
-
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
 		
