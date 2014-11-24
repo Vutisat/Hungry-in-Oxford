@@ -52,4 +52,9 @@ Hungry-in-Oxford
     
     
 http://www.javasoft.de/synthetica/themes/
+
 https://code.google.com/p/seaglass/
+
+http://imgur.com/krQkRcJ 
+
+http://imgur.com/lxxvPSJ
