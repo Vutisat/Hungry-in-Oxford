@@ -1,12 +1,18 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 public class ViewRestaurant extends JPanel {
 	public String name;
@@ -18,7 +24,7 @@ public class ViewRestaurant extends JPanel {
 		super();
 		
 		FlowLayout experimentLayout = new FlowLayout();
-		this.setLayout(experimentLayout);
+		//this.setLayout(experimentLayout);
 		this.name = str;
 		// set up the buttons
 		btn1 = new JButton("Back");
@@ -33,6 +39,20 @@ public class ViewRestaurant extends JPanel {
 		try	{
 			db = new JDBC();
 			rs = db.getRestaurantFood(str);
+			
+			DefaultListModel listModel;
+			
+			listModel = new DefaultListModel();
+			
+			/*while(rs.next())	{
+				listModel.addElement(rs.getString("name"));
+			}
+			
+			JList list = new JList(listModel);
+			JScrollPane scroll = new JScrollPane(list);
+			scroll.setBounds(0, 0, 100, 100);
+			this.add(scroll);*/
+			
 			
 			while(rs.next()){
 				String food = rs.getString("name");
@@ -51,10 +71,11 @@ public class ViewRestaurant extends JPanel {
 		frame = new JFrame(this.name);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
-		frame.setBounds(300, 400, 500, 500);
+		frame.setBounds(300, 400, 1000, 1000);
 		frame.setBackground(new Color(100, 0, 20));
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 
 	public class ButtonResponder implements ActionListener {
