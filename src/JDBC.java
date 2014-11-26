@@ -44,6 +44,44 @@ public class JDBC {
 		return rs;
 	}
 	
+		public ResultSet getFoodInfo(String fid) {
+		ResultSet rs = null;
+		try {
+			rs = this.statement
+					.executeQuery("SELECT * FROM NutritionalValues WHERE fid = "
+							+ "\"" + fid + "\"");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return rs;
+	}
+
+	public ResultSet getRestaurantDrink(String did) {
+		ResultSet rs = null;
+		try {
+			rs = this.statement
+					.executeQuery("SELECT Name FROM SpecialtyDrinks WHERE did = "
+							+ "\"" + did + "\"");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+	public ResultSet getAvailability(String rname) {
+		ResultSet rs = null;
+		try {
+			rs = this.statement
+					.executeQuery("SELECT * FROM Availability WHERE rname = "
+							+ "\"" + rname + "\"");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
+	
 	public ResultSet customQuery(String query)	{
 		ResultSet rs = null;
 		try {
