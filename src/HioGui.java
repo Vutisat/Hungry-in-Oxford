@@ -42,10 +42,11 @@ public class HioGui extends JPanel {
 		frame = new JFrame("Hungry In Oxford");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
-		frame.setBounds(300, 400, 500, 500);
+		frame.setBounds(300, 400, 1000, 1000);
 		frame.setBackground(new Color(100, 0, 20));
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 
 	public class ButtonResponder implements ActionListener {
@@ -79,8 +80,8 @@ public class HioGui extends JPanel {
 	}
 
 	public static void main(String[] args) throws Exception, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		UIManager.installLookAndFeel("SeaGlass", "com.seaglasslookandfeel.SeaGlassLookAndFeel");
-        UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+		//UIManager.installLookAndFeel("SeaGlass", "com.seaglasslookandfeel.SeaGlassLookAndFeel");
+       // UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
 		HioGui start = new HioGui();
 	}
 

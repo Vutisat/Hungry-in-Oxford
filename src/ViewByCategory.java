@@ -34,10 +34,11 @@ public class ViewByCategory extends JPanel {
 		frame = new JFrame("View by food category");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
-		frame.setBounds(300, 400, 500, 500);
+		frame.setBounds(300, 400, 1000, 1000);
 		frame.setBackground(new Color(100, 0, 20));
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+		frame.setResizable(false);
 	}
 
 	public class ButtonResponder implements ActionListener {
