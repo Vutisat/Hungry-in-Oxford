@@ -107,6 +107,7 @@ public class ViewAllRestuarants extends JPanel {
 				System.out.println("SQL Statement Failed.. probably"); 
 				e.printStackTrace();
 			};
+			db.closeDb();
 		
 	}
 
