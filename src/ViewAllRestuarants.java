@@ -23,7 +23,7 @@ public class ViewAllRestuarants extends JPanel {
 		
 		//Back button
 		btn1 = new JButton("Back");
-		btn1.setBounds(0, 50, 75, 30);
+		btn1.setBounds(600, 325, 75, 30);
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
@@ -48,7 +48,7 @@ public class ViewAllRestuarants extends JPanel {
 		frame = new JFrame("View all restaurants");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
-		frame.setBounds(300, 400, 1000, 1000);
+		frame.setBounds(0, 0, 700, 400);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);
