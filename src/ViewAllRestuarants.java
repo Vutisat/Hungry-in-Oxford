@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class ViewAllRestuarants extends JPanel {
@@ -20,6 +21,15 @@ public class ViewAllRestuarants extends JPanel {
 	public ViewAllRestuarants() {
 		super();
 		this.setLayout(null);
+		
+		//Title
+		JLabel title = new JLabel("Restaurants in the OxBox", JLabel.CENTER);
+		title.setBounds(0, 0, 700, 50);
+		title.setFont(title.getFont().deriveFont(32f));
+		this.add(title);
+		
+		//ComboBox
+		
 		
 		//Back button
 		btn1 = new JButton("Back");
@@ -39,7 +49,7 @@ public class ViewAllRestuarants extends JPanel {
 				JButton btnx = new JButton(str);
 				btnx.setBounds(0, 50, 100, 100);
 				btnx.addActionListener(br);
-				this.add(btnx);
+				//this.add(btnx);
 			}
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		db.closeDb();
