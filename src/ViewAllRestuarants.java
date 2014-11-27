@@ -29,7 +29,7 @@ public class ViewAllRestuarants extends JPanel {
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
 
-		//add restaruant buttons
+		//add restaurant buttons
 		ResultSet rs = null;
 		try	{
 			db = new JDBC();
