@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,6 +16,7 @@ import javax.swing.SwingConstants;
 public class ViewAllRestuarants extends JPanel {
 
 	static JFrame frame;
+	private ArrayList<JButton> restButtons = new ArrayList<JButton>();
 	private JButton btn1;
 	JDBC db;
 	
@@ -31,7 +33,7 @@ public class ViewAllRestuarants extends JPanel {
 		this.add(title);
 		
 		//ComboBox
-		String[] types = {"All Restaurants", "Fast Food", "American", "Mexican", "Asian", "Bar", "Italian", "Breakfast", "Subs", "Indian", "Wings"};
+		String[] types = {"All Restaurants", "Fast Food", "American", "Mexican", "Asian", "Bar", "Subs", "Indian", "Wings"};
 		JComboBox foodTypes = new JComboBox(types);
 		foodTypes.setBounds(20, 65, 150, 30);
 		((JLabel)foodTypes.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
@@ -39,29 +41,12 @@ public class ViewAllRestuarants extends JPanel {
 		ComboBoxSelector cb = new ComboBoxSelector();
 		foodTypes.addActionListener(cb);
 		
-		
 		//Back button
 		btn1 = new JButton("Back");
 		btn1.setBounds(600, 325, 75, 30);
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
-
-		//add restaurant buttons
-		ResultSet rs = null;
-		try	{
-			db = new JDBC();
-			rs = db.getAllRestaurants();
-			
-			while(rs.next()){
-				String str = rs.getString("name");
-				JButton btnx = new JButton(str);
-				btnx.setBounds(0, 50, 100, 100);
-				btnx.addActionListener(br);
-				//this.add(btnx);
-			}
-		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
-		db.closeDb();
 		
 		//Frame to show
 		frame = new JFrame("View all restaurants");
@@ -75,6 +60,11 @@ public class ViewAllRestuarants extends JPanel {
 	
 	public void restButtons(String type)	{
 		ResultSet rs = null;
+		for(JButton but : restButtons)	{
+			this.remove(but);
+		}
+		
+		restButtons.clear();
 		try	{
 			db = new JDBC();
 			rs = db.getRestByType(type);
@@ -84,13 +74,17 @@ public class ViewAllRestuarants extends JPanel {
 			while(rs.next()){
 				String str = rs.getString("name");
 				JButton btnx = new JButton(str);
+				restButtons.add(btnx);
 				btnx.setBounds(space, space, 120, 30);
 				space += 50;
 				//btnx.addActionListener(br);
 				this.add(btnx);
 				repaint();
 			}
-		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
+		}catch(Exception e){
+			System.out.println("SQL Statement Failed.. probably"); 
+			e.printStackTrace();
+			};
 		
 	}
 
@@ -112,7 +106,6 @@ public class ViewAllRestuarants extends JPanel {
 			}
 			repaint();
 		}
-
 	}
 	
 	public class ComboBoxSelector implements ActionListener	{
@@ -125,6 +118,5 @@ public class ViewAllRestuarants extends JPanel {
 			restButtons(foodType);
 			
 		}
-		
 	}
 }
