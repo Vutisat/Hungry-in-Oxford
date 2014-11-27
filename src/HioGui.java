@@ -54,7 +54,6 @@ public class HioGui extends JPanel {
 		frame.add(this);
 		frame.setBounds(0, 0, 400, 400);
 		frame.setLocationRelativeTo(null);
-		frame.setPreferredSize(new Dimension(400, 400));
 		frame.setVisible(true);
 		frame.setResizable(false);
 	}
