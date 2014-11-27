@@ -36,27 +36,15 @@ public class ViewRestaurant extends JPanel {
 		try	{
 			db = new JDBC();
 			rs = db.getRestaurantFood(str);
-			
 			DefaultListModel listModel;
-			
 			listModel = new DefaultListModel();
-			
-			/*while(rs.next())	{
+			while(rs.next())	{
 				listModel.addElement(rs.getString("name"));
 			}
-			
 			JList list = new JList(listModel);
 			JScrollPane scroll = new JScrollPane(list);
 			scroll.setBounds(0, 0, 100, 100);
-			this.add(scroll);*/
-			
-			while(rs.next()){
-				String food = rs.getString("name");
-				JButton btnx = new JButton(food);
-				btnx.setBounds(0, 50, 100, 100);
-				btnx.addActionListener(br);
-				this.add(btnx);
-			}
+			this.add(scroll);
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		db.closeDb();
 		
