@@ -103,8 +103,8 @@ public class ViewAllRestuarants extends JPanel {
 				repaint();
 			}
 		}catch(Exception e){
-			System.out.println("SQL Statement Failed.. probably"); 
-			e.printStackTrace();
+				System.out.println("SQL Statement Failed.. probably"); 
+				e.printStackTrace();
 			};
 		
 	}
