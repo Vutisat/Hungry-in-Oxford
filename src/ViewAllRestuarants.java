@@ -97,7 +97,8 @@ public class ViewAllRestuarants extends JPanel {
 					btnx.setBounds(x, y, 100, 30);
 				}
 				x += 115;
-				//btnx.addActionListener(br);
+				ButtonResponder br = new ButtonResponder();
+				btnx.addActionListener(br);
 				this.add(btnx);
 				repaint();
 			}
