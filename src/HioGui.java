@@ -42,7 +42,7 @@ public class HioGui extends JPanel {
 	        catch (Exception ex) {
 	            ex.printStackTrace();
 	        }
-		descrip.setBounds(0, 200, 400, 300);
+		descrip.setBounds(50, 200, 300, 300);
 		descrip.setBackground(new Color(255, 255, 255, 0));
 		descrip.setEditable(false);
 		this.add(descrip);
