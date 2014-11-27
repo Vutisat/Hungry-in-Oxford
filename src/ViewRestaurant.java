@@ -27,9 +27,7 @@ public class ViewRestaurant extends JPanel {
 		
 		//Back button
 		btn1 = new JButton("Back");
-		int buttonHeight = btn1.getPreferredSize().height;
-		int buttonWidth = btn1.getPreferredSize().width;
-		btn1.setBounds(0, 50, buttonWidth, buttonHeight);
+		btn1.setBounds(600, 325, 75, 30);
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
@@ -55,7 +53,7 @@ public class ViewRestaurant extends JPanel {
 			while(rs.next()){
 				String food = rs.getString("name");
 				JButton btnx = new JButton(food);
-				btnx.setBounds(0, 50, buttonWidth, buttonHeight);
+				btnx.setBounds(0, 50, 100, 100);
 				btnx.addActionListener(br);
 				this.add(btnx);
 			}
@@ -66,8 +64,7 @@ public class ViewRestaurant extends JPanel {
 		frame = new JFrame(this.name);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
-		frame.setBounds(300, 400, 1000, 1000);
-		frame.setBackground(new Color(100, 0, 20));
+		frame.setBounds(0, 0, 700, 400);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);
