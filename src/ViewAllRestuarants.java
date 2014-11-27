@@ -59,6 +59,7 @@ public class ViewAllRestuarants extends JPanel {
 		frame.setResizable(false);
 	}
 	
+	//Create buttons 
 	public void restButtons(String type)	{
 		ResultSet rs = null;
 		for(JButton but : restButtons)	{
