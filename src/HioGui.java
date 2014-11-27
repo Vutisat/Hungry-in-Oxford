@@ -71,10 +71,9 @@ public class HioGui extends JPanel {
 	}
 	
 	public class ButtonResponder implements ActionListener {
-
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
 			if (e.getSource() == btn1) {
 				// db.main(null);
 				ViewAllRestuarants vr = new ViewAllRestuarants();
@@ -82,7 +81,6 @@ public class HioGui extends JPanel {
 				vr.setVisible(true);
 				CloseFrame();
 			}
-			
 			repaint();
 		}
 
