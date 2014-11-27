@@ -72,19 +72,31 @@ public class ViewAllRestuarants extends JPanel {
 			
 			int x = 200;
 			int y = 65;
+			int count = 0;
 			
 			while(rs.next()){
 				String str = rs.getString("name");
 				JButton btnx = new JButton(str);
-				if(str.length() > 6)	{
+				if(str.length() > 11)	{
+					btnx.setFont(new Font("Arial", Font.PLAIN, 8));
+				}
+				else if(str.length() > 6)	{
 					btnx.setFont(new Font("Arial", Font.PLAIN, 11));
 				}
 				else {
 					btnx.setFont(new Font("Arial", Font.PLAIN, 14));
 				}
 				restButtons.add(btnx);
-				btnx.setBounds(x, y, 100, 30);
-				x += 50;
+				count++;
+				if(count > 4)	{
+					y+= 50;
+					x = 200;
+					btnx.setBounds(x, y, 100, 30);
+					count = 1;
+				}else	{
+					btnx.setBounds(x, y, 100, 30);
+				}
+				x += 115;
 				//btnx.addActionListener(br);
 				this.add(btnx);
 				repaint();
