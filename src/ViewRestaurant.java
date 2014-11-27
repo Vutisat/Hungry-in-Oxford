@@ -4,6 +4,8 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 
 import javax.swing.DefaultListModel;
@@ -39,14 +41,15 @@ public class ViewRestaurant extends JPanel {
 		try	{
 			db = new JDBC();
 			rs = db.getRestaurantFood(str);
-			DefaultListModel listModel;
-			listModel = new DefaultListModel();
+			DefaultListModel listModel = new DefaultListModel();
 			while(rs.next())	{
 				listModel.addElement(rs.getString("name"));
 			}
 			JList list = new JList(listModel);
 			list.setBackground(new Color(255, 255, 255, 0));
-			list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			ListResponder lr = new ListResponder();
+			list.addMouseListener(lr);
 			JScrollPane scroll = new JScrollPane(list);
 			scroll.setBounds(0, 0, 300, 300);
 			this.add(scroll);
@@ -83,15 +86,37 @@ public class ViewRestaurant extends JPanel {
 		}
 	}
 	
-	public class ListResponder implements ActionListener {
+	public class ListResponder implements MouseListener {
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == btn1) {
-				ViewAllRestuarants vr = new ViewAllRestuarants();
-				CloseFrame();
-			}
+		public void mouseClicked(MouseEvent e) {
+			System.out.println("clicked me yo");
+			revalidate();
 			repaint();
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 	}
 }
