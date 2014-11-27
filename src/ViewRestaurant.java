@@ -42,6 +42,7 @@ public class ViewRestaurant extends JPanel {
 			DefaultListModel listModel;
 			listModel = new DefaultListModel();
 			while(rs.next())	{
+				listModel.addElement(rs.getString("name"));
 			}
 			JList list = new JList(listModel);
 			list.setBackground(new Color(255, 255, 255, 0));
