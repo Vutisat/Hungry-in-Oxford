@@ -65,16 +65,13 @@ public class ViewAllRestuarants extends JPanel {
 		for(JButton but : restButtons)	{
 			this.remove(but);
 		}
-		
 		restButtons.clear();
 		try	{
 			db = new JDBC();
 			rs = db.getRestByType(type);
-			
 			int x = 200;
 			int y = 65;
 			int count = 0;
-			
 			while(rs.next()){
 				String str = rs.getString("name");
 				JButton btnx = new JButton(str);
@@ -108,7 +105,6 @@ public class ViewAllRestuarants extends JPanel {
 				e.printStackTrace();
 			};
 			db.closeDb();
-		
 	}
 
 	private void CloseFrame() {
