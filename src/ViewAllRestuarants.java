@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -69,14 +70,16 @@ public class ViewAllRestuarants extends JPanel {
 			db = new JDBC();
 			rs = db.getRestByType(type);
 			
-			int space = 0;
+			int x = 200;
+			int y = 65;
 			
 			while(rs.next()){
 				String str = rs.getString("name");
 				JButton btnx = new JButton(str);
+				btnx.setFont(new Font("Arial", Font.PLAIN, 10));
 				restButtons.add(btnx);
-				btnx.setBounds(space, space, 120, 30);
-				space += 50;
+				btnx.setBounds(x, y, 100, 30);
+				x += 50;
 				//btnx.addActionListener(br);
 				this.add(btnx);
 				repaint();
