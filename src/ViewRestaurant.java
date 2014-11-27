@@ -22,11 +22,10 @@ public class ViewRestaurant extends JPanel {
 
 	public ViewRestaurant(String str) {
 		super();
-		
-		FlowLayout experimentLayout = new FlowLayout();
-		//this.setLayout(experimentLayout);
+		this.setLayout(null);
 		this.name = str;
-		// set up the buttons
+		
+		//Back button
 		btn1 = new JButton("Back");
 		int buttonHeight = btn1.getPreferredSize().height;
 		int buttonWidth = btn1.getPreferredSize().width;
@@ -53,7 +52,6 @@ public class ViewRestaurant extends JPanel {
 			scroll.setBounds(0, 0, 100, 100);
 			this.add(scroll);*/
 			
-			
 			while(rs.next()){
 				String food = rs.getString("name");
 				JButton btnx = new JButton(food);
@@ -63,11 +61,8 @@ public class ViewRestaurant extends JPanel {
 			}
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		db.closeDb();
-
-		this.setVisible(true);
-
-		//this.setVisible(true);
 		
+		//Frame to show
 		frame = new JFrame(this.name);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
@@ -78,35 +73,19 @@ public class ViewRestaurant extends JPanel {
 		frame.setResizable(false);
 	}
 
-	public class ButtonResponder implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-
-			if (e.getSource() == btn1) {
-				// db.main(null);
-				ViewAllRestuarants vr = new ViewAllRestuarants();
-				//hg.main(null);
-				CloseFrame();
-			}
-			repaint();
-		}
-
-	}
-
 	private void CloseFrame() {
 		frame.setVisible(false);
 	}
 
-	/*public static void main(String[] args) {
-		frame = new JFrame(this.name);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(this);
-		frame.setBounds(300, 400, 500, 500);
-		frame.setBackground(new Color(100, 0, 20));
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+	public class ButtonResponder implements ActionListener {
 
-	}*/
-
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == btn1) {
+				ViewAllRestuarants vr = new ViewAllRestuarants();
+				CloseFrame();
+			}
+			repaint();
+		}
+	}
 }
