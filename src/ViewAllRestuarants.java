@@ -72,6 +72,27 @@ public class ViewAllRestuarants extends JPanel {
 		frame.setVisible(true);
 		frame.setResizable(false);
 	}
+	
+	public void restButtons(String type)	{
+		ResultSet rs = null;
+		try	{
+			db = new JDBC();
+			rs = db.getRestByType(type);
+			
+			int space = 0;
+			
+			while(rs.next()){
+				String str = rs.getString("name");
+				JButton btnx = new JButton(str);
+				btnx.setBounds(space, space, 120, 30);
+				space += 50;
+				//btnx.addActionListener(br);
+				this.add(btnx);
+				repaint();
+			}
+		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
+		
+	}
 
 	private void CloseFrame() {
 		frame.dispose();
@@ -101,6 +122,7 @@ public class ViewAllRestuarants extends JPanel {
 			JComboBox cb = (JComboBox)e.getSource();
 			String foodType = (String)cb.getSelectedItem();
 			System.out.println(foodType);
+			restButtons(foodType);
 			
 		}
 		
