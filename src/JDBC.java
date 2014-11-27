@@ -81,6 +81,21 @@ public class JDBC {
 		return rs;
 	}
 
+	public ResultSet getRestByType(String type)	{
+		ResultSet rs = null;	
+		try	{
+			if(!type.contains(" Restaurant")){
+				rs = this.statement.executeQuery("SELECT name FROM Restaurant WHERE type = " + "\"" + type + "\"");
+			}
+			else{
+				rs = this.statement.executeQuery("SELECT name From Restaurant");
+			}
+		}catch(Exception e)	{
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
 	
 	public ResultSet customQuery(String query)	{
 		ResultSet rs = null;
