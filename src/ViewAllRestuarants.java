@@ -36,6 +36,8 @@ public class ViewAllRestuarants extends JPanel {
 		foodTypes.setBounds(20, 65, 150, 30);
 		((JLabel)foodTypes.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		this.add(foodTypes);
+		ComboBoxSelector cb = new ComboBoxSelector();
+		foodTypes.addActionListener(cb);
 		
 		
 		//Back button
@@ -77,10 +79,9 @@ public class ViewAllRestuarants extends JPanel {
 	}
 	
 	public class ButtonResponder implements ActionListener {
-
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
 			if (e.getSource() == btn1) {
 				HioGui hg = new HioGui();
 				CloseFrame();
@@ -91,5 +92,17 @@ public class ViewAllRestuarants extends JPanel {
 			repaint();
 		}
 
+	}
+	
+	public class ComboBoxSelector implements ActionListener	{
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JComboBox cb = (JComboBox)e.getSource();
+			String foodType = (String)cb.getSelectedItem();
+			System.out.println(foodType);
+			
+		}
+		
 	}
 }
