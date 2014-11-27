@@ -31,6 +31,7 @@ public class HioGui extends JPanel {
 		btn1.addActionListener(br);
 		
 		//App Description
+		//NORRRRRRRRAAAAAAAAAAAAAAAAAAAAAAA PUT YOUR DESCRIPTION HEEEEEEEEEEEEEEEERRRRRRRRRRRREEEEEEEEEEEEEEEEE%@@@@@@@#@$%@#$%@#$%@#$%@#$%*(@)#&*@)!(@&#^%()!&@#$%_()!&@)(#%&!)(@#&%)!(@#&%)(@#*$%
 		String text = "NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA PUT YOUR DESCRIPTION Hqwer qwer qwer qwer qwer qwer qwer qwer qwer qwer aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 		JTextPane descrip = new JTextPane();
 		 try {
@@ -47,7 +48,6 @@ public class HioGui extends JPanel {
 		descrip.setEditable(false);
 		this.add(descrip);
 		
-
 		//Frame to show
 		frame = new JFrame("Hungry In Oxford");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,12 +58,10 @@ public class HioGui extends JPanel {
 		frame.setResizable(false);
 	}
 
-
 	private void CloseFrame() {
 		frame.dispose();
 	}
 	
-
 	public static void main(String[] args) throws Exception, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		//UIManager.installLookAndFeel("SeaGlass", "com.seaglasslookandfeel.SeaGlassLookAndFeel");
         //UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
@@ -83,7 +81,5 @@ public class HioGui extends JPanel {
 			}
 			repaint();
 		}
-
 	}
-
 }
