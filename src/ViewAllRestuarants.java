@@ -6,9 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class ViewAllRestuarants extends JPanel {
 
@@ -29,6 +31,11 @@ public class ViewAllRestuarants extends JPanel {
 		this.add(title);
 		
 		//ComboBox
+		String[] types = {"All Restaurants", "Fast Food", "American", "Mexican", "Asian", "Bar", "Italian", "Breakfast", "Subs", "Indian", "Wings"};
+		JComboBox foodTypes = new JComboBox(types);
+		foodTypes.setBounds(20, 65, 150, 30);
+		((JLabel)foodTypes.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+		this.add(foodTypes);
 		
 		
 		//Back button
