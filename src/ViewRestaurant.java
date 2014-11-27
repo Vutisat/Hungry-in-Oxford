@@ -19,6 +19,8 @@ public class ViewRestaurant extends JPanel {
 	static JFrame frame;
 	private JButton btn1;
 	JDBC db;
+	
+	//title.setBounds(x, y, width, height);
 
 	public ViewRestaurant(String str) {
 		super();
@@ -32,6 +34,7 @@ public class ViewRestaurant extends JPanel {
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
 		
+		//Create list of food items
 		ResultSet rs = null;
 		try	{
 			db = new JDBC();
@@ -39,11 +42,12 @@ public class ViewRestaurant extends JPanel {
 			DefaultListModel listModel;
 			listModel = new DefaultListModel();
 			while(rs.next())	{
-				listModel.addElement(rs.getString("name"));
 			}
 			JList list = new JList(listModel);
+			list.setBackground(new Color(255, 255, 255, 0));
+			list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			JScrollPane scroll = new JScrollPane(list);
-			scroll.setBounds(0, 0, 100, 100);
+			scroll.setBounds(0, 0, 300, 300);
 			this.add(scroll);
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		db.closeDb();
@@ -52,10 +56,14 @@ public class ViewRestaurant extends JPanel {
 		frame = new JFrame(this.name);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
-		frame.setBounds(0, 0, 700, 400);
+		frame.setBounds(0, 0, 800, 800);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);
+	}
+	
+	public void getNutInfo()	{
+		
 	}
 
 	private void CloseFrame() {
@@ -63,6 +71,18 @@ public class ViewRestaurant extends JPanel {
 	}
 
 	public class ButtonResponder implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == btn1) {
+				ViewAllRestuarants vr = new ViewAllRestuarants();
+				CloseFrame();
+			}
+			repaint();
+		}
+	}
+	
+	public class ListResponder implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
