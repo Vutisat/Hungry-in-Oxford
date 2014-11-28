@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -28,6 +29,12 @@ public class ViewRestaurant extends JPanel {
 		super();
 		this.setLayout(null);
 		this.name = str;
+		
+		//Title
+		JLabel title = new JLabel(str, JLabel.CENTER);
+		title.setBounds(200, 0, 700, 50);
+		title.setFont(title.getFont().deriveFont(32f));
+		this.add(title);
 		
 		//Back button
 		btn1 = new JButton("Back");
@@ -57,7 +64,7 @@ public class ViewRestaurant extends JPanel {
 		db.closeDb();
 		
 		//Frame to show
-		frame = new JFrame(this.name);
+		frame = new JFrame("Restaurant");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
 		frame.setBounds(0, 0, 800, 800);
