@@ -62,7 +62,9 @@ public class ViewRestaurant extends JPanel {
 			}
 			list = new JList(listModel);
 			list.setBackground(new Color(255, 255, 255, 0));
-			list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			ListListener ll = new ListListener();
+			list.addMouseListener(ll);
 			JScrollPane scroll = new JScrollPane(list);
 			scroll.setBounds(25, 225, 300, 200);
 			this.add(scroll);
@@ -172,6 +174,40 @@ public class ViewRestaurant extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
+			
+		}
+		
+	}
+	
+	public class ListListener implements MouseListener	{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			repaint();
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
 			
 		}
 		
