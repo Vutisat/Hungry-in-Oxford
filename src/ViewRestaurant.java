@@ -170,7 +170,7 @@ public class ViewRestaurant extends JPanel {
 	}
 	
 	public class AllFood implements ActionListener	{
-
+		//what are we going to do about drinks that don't have any nutritional info? not include them in the list?
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
