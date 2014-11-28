@@ -61,7 +61,7 @@ public class ViewRestaurant extends JPanel {
 			ListResponder lr = new ListResponder();
 			list.addMouseListener(lr);
 			JScrollPane scroll = new JScrollPane(list);
-			scroll.setBounds(50, 300, 300, 300);
+			scroll.setBounds(25, 225, 300, 200);
 			this.add(scroll);
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		
