@@ -19,6 +19,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
@@ -108,8 +109,8 @@ public class ViewRestaurant extends JPanel {
 		
 		//Table of food items with nutritional info
 		String[] columnNames = {"Food Item", "Calories", "Fat", "Sugar", "Sodium", "Carbs"};
-		String[][] data = {{"Hello", "hello", "Hello", "Hello", "hello", "Hello"}, {"Hello", "Hello", "Hello", "Hello", "hello", "Hello"}};
-		JTable foodList = new JTable(data, columnNames);
+		DefaultTableModel tableData = new DefaultTableModel(columnNames, 0);
+		JTable foodList = new JTable(tableData);
 		JScrollPane scrollTable = new JScrollPane(foodList);
 		scrollTable.setBounds(25, 450, 750, 250);
 		this.add(scrollTable);
