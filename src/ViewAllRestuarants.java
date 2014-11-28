@@ -39,8 +39,10 @@ public class ViewAllRestuarants extends JPanel {
 		foodTypes.setBounds(20, 65, 150, 30);
 		((JLabel)foodTypes.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
 		this.add(foodTypes);
+		foodTypes.setSelectedIndex(0);
 		ComboBoxSelector cb = new ComboBoxSelector();
 		foodTypes.addActionListener(cb);
+		restButtons("All Restaurants");
 		
 		//Back button
 		btn1 = new JButton("Back");
