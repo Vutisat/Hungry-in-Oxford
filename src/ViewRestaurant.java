@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 
 public class ViewRestaurant extends JPanel {
 	public String name;
@@ -64,10 +66,11 @@ public class ViewRestaurant extends JPanel {
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		
 		//Availability of restaurants
-		try{	
-			JTextPane available = new JTextPane();
-			rs = db.getAvailability(name);
-			StringBuilder sb = new StringBuilder();
+			
+		JTextPane available = new JTextPane();
+		rs = db.getAvailability(name);
+		StringBuilder sb = new StringBuilder();
+		try{
 			while(rs.next())	{
 				sb.append(rs.getString("DayOpen") + " ");
 				sb.append(rs.getString("TimeOpen") + " - ");
@@ -75,9 +78,21 @@ public class ViewRestaurant extends JPanel {
 				sb.append("\n");
 				//McDonalds, SoHi, papa johns, fiest charra, sushi nara, krishna, steinkeller all have no available times
 			}
-			System.out.println(sb.toString());
 		}catch(Exception e){System.out.println("BlahLBalgh");};
-		db.closeDb();
+		
+		db.closeDb();	
+		JTextPane availability = new JTextPane();	 
+		SimpleAttributeSet attribs = new SimpleAttributeSet();
+		StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_CENTER);
+		availability.setParagraphAttributes(attribs, true);
+		availability.setText(sb.toString());     
+		availability.setBounds(50, 200, 300, 300);
+		availability.setBackground(new Color(255, 255, 255, 0));
+		availability.setEditable(false);
+		this.add(availability);
+			
+		System.out.println(sb.toString());
+		
 		
 		//Frame to show
 		frame = new JFrame("Restaurant");
