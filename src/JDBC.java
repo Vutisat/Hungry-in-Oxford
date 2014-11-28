@@ -81,7 +81,7 @@ public class JDBC {
 		return rs;
 	}
 	
-	public ResultSet getFoodAndDrinkItemInfo(String rest)	{
+	public ResultSet getFoodItemInfo(String rest)	{
 		ResultSet rs = null;	
 		try	{
 			rs = this.statement.executeQuery("SELECT FoodItems.name, Calories, Fat, Sugar, Sodium, Carbs FROM FoodItems, NutritionalValues WHERE FoodItems.FId = NutritionalValues.FId AND RName = " + "\"" + rest + "\"");

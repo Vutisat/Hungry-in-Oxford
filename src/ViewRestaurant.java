@@ -119,6 +119,7 @@ public class ViewRestaurant extends JPanel {
 		String[] columnNames = {"Food Item", "Calories", "Fat", "Sugar", "Sodium", "Carbs"};
 		DefaultTableModel tableData = new DefaultTableModel(columnNames, 0);
 		foodList = new JTable(tableData);
+		foodList.getColumnModel().getColumn(0).setPreferredWidth(200);
 		JScrollPane scrollTable = new JScrollPane(foodList);
 		scrollTable.setBounds(25, 450, 750, 250);
 		this.add(scrollTable);
@@ -173,7 +174,7 @@ public class ViewRestaurant extends JPanel {
 			ResultSet rs = null;
 			db = new JDBC();
 			try	{
-				rs = db.getFoodAndDrinkItemInfo(name);
+				rs = db.getFoodItemInfo(name);
 				while(rs.next())	{
 					String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs")};
 					model.addRow(row);
