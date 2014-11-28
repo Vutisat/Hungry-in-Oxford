@@ -66,8 +66,6 @@ public class ViewRestaurant extends JPanel {
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		
 		//Availability of restaurants
-			
-		JTextPane available = new JTextPane();
 		rs = db.getAvailability(name);
 		StringBuilder sb = new StringBuilder();
 		try{
