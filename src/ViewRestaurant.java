@@ -41,7 +41,7 @@ public class ViewRestaurant extends JPanel {
 		
 		//Back button
 		btn1 = new JButton("Back");
-		btn1.setBounds(600, 325, 75, 30);
+		btn1.setBounds(700, 725, 75, 30);
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
@@ -61,7 +61,7 @@ public class ViewRestaurant extends JPanel {
 			ListResponder lr = new ListResponder();
 			list.addMouseListener(lr);
 			JScrollPane scroll = new JScrollPane(list);
-			scroll.setBounds(0, 0, 300, 300);
+			scroll.setBounds(50, 300, 300, 300);
 			this.add(scroll);
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
 		
@@ -83,7 +83,7 @@ public class ViewRestaurant extends JPanel {
 		StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_CENTER);
 		availability.setParagraphAttributes(attribs, true);
 		availability.setText(sb.toString());     
-		availability.setBounds(50, 200, 300, 300);
+		availability.setBounds(400, 50, 300, 300);
 		availability.setBackground(new Color(255, 255, 255, 0));
 		availability.setEditable(false);
 		this.add(availability);
