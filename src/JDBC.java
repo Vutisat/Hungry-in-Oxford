@@ -64,6 +64,16 @@ public class JDBC {
 		}
 		return rs;
 	}
+	
+	public ResultSet getRestaurantFoodAndDrink(String rest) {
+		ResultSet rs = null;
+		try {
+			rs = this.statement.executeQuery("SELECT Name FROM FoodItems WHERE RName = " + "\"" + rest + "\" UNION SELECT Name FROM SpecialtyDrinks WHERE RName = " + "\"" + rest + "\"");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
 	public ResultSet getAvailability(String rname) {
 		ResultSet rs = null;
