@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
 import javax.swing.ListSelectionModel;
 
 public class ViewRestaurant extends JPanel {
@@ -61,6 +62,20 @@ public class ViewRestaurant extends JPanel {
 			scroll.setBounds(0, 0, 300, 300);
 			this.add(scroll);
 		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
+		
+		//Availability of restaurants
+		try{	
+			JTextPane available = new JTextPane();
+			rs = db.getAvailability(name);
+			StringBuilder sb = new StringBuilder();
+			while(rs.next())	{
+				sb.append(rs.getString("DayOpen") + " ");
+				sb.append(rs.getString("TimeOpen") + " - ");
+				sb.append(rs.getString("TimeClose"));
+				sb.append("\n");
+			}
+			System.out.println(sb.toString());
+		}catch(Exception e){System.out.println("BlahLBalgh");};
 		db.closeDb();
 		
 		//Frame to show
