@@ -93,14 +93,20 @@ public class ViewRestaurant extends JPanel {
 		
 		//Add food to table button
 		JButton add = new JButton("Add food to table");
-		add.setBounds(350, 225, 150, 25);
+		add.setBounds(350, 275, 150, 25);
 		this.add(add);
 		
 		//Delete food from table button
 		JButton remove = new JButton("Remove food from table");
-		remove.setBounds(350, 275, 150, 25);
+		remove.setBounds(350, 325, 150, 25);
 		remove.setFont(new Font("Arial", Font.PLAIN, 11));
 		this.add(remove);
+		
+		//View all food
+		JButton allFood = new JButton("View all food");
+		allFood.setBounds(350, 225, 150, 25);
+		//allFood.setFont(new Font("Arial", Font.PLAIN, 11));
+		this.add(allFood);
 		
 		//Table of food items with nutritional info
 		String[] columnNames = {"Food Item", "Calories", "Fat", "Sugar", "Sodium", "Carbs"};
