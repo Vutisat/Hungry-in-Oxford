@@ -102,7 +102,7 @@ public class ViewRestaurant extends JPanel {
 		
 		//Delete food from table button
 		JButton remove = new JButton("Remove food from table");
-		remove.setBounds(350, 325, 150, 25);
+		remove.setBounds(350, 400, 150, 25);
 		remove.setFont(new Font("Arial", Font.PLAIN, 11));
 		RemoveFood rf = new RemoveFood();
 		remove.addMouseListener(rf);
