@@ -28,6 +28,7 @@ public class ViewRestaurant extends JPanel {
 	static JFrame frame;
 	private JButton btn1;
 	private JList list;
+	private JTable foodList;
 	JDBC db;
 	
 	//title.setBounds(x, y, width, height);
@@ -110,7 +111,7 @@ public class ViewRestaurant extends JPanel {
 		//Table of food items with nutritional info
 		String[] columnNames = {"Food Item", "Calories", "Fat", "Sugar", "Sodium", "Carbs"};
 		DefaultTableModel tableData = new DefaultTableModel(columnNames, 0);
-		JTable foodList = new JTable(tableData);
+		foodList = new JTable(tableData);
 		JScrollPane scrollTable = new JScrollPane(foodList);
 		scrollTable.setBounds(25, 450, 750, 250);
 		this.add(scrollTable);
@@ -123,10 +124,6 @@ public class ViewRestaurant extends JPanel {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);
-	}
-	
-	public void getNutInfo()	{
-		
 	}
 
 	private void CloseFrame() {
@@ -143,5 +140,35 @@ public class ViewRestaurant extends JPanel {
 			}
 			repaint();
 		}
+	}
+	
+	public class AddFood implements ActionListener	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+		
+	}
+	
+	public class RemoveFood implements ActionListener	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+		
+	}
+	
+	public class allFood implements ActionListener	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+		
 	}
 }
