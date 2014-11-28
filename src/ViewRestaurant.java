@@ -94,18 +94,23 @@ public class ViewRestaurant extends JPanel {
 		//Add food to table button
 		JButton add = new JButton("Add food to table");
 		add.setBounds(350, 275, 150, 25);
+		AddFood af = new AddFood();
+		add.addActionListener(af);
 		this.add(add);
 		
 		//Delete food from table button
 		JButton remove = new JButton("Remove food from table");
 		remove.setBounds(350, 325, 150, 25);
 		remove.setFont(new Font("Arial", Font.PLAIN, 11));
+		RemoveFood rf = new RemoveFood();
+		remove.addActionListener(rf);
 		this.add(remove);
 		
 		//View all food
 		JButton allFood = new JButton("View all food");
 		allFood.setBounds(350, 225, 150, 25);
-		//allFood.setFont(new Font("Arial", Font.PLAIN, 11));
+		AllFood allF = new AllFood();
+		allFood.addActionListener(allF);
 		this.add(allFood);
 		
 		//Table of food items with nutritional info
@@ -162,7 +167,7 @@ public class ViewRestaurant extends JPanel {
 		
 	}
 	
-	public class allFood implements ActionListener	{
+	public class AllFood implements ActionListener	{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
