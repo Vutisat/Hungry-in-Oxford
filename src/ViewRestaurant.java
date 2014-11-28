@@ -117,8 +117,14 @@ public class ViewRestaurant extends JPanel {
 		
 		//Table of food items with nutritional info
 		String[] columnNames = {"Food Item", "Calories", "Fat", "Sugar", "Sodium", "Carbs"};
-		DefaultTableModel tableData = new DefaultTableModel(columnNames, 0);
-		foodList = new JTable(tableData);
+		//DefaultTableModel tableData = new DefaultTableModel(columnNames, 0);
+		foodList = new JTable();
+		foodList.setModel(new DefaultTableModel(columnNames, 0){
+			@Override
+			public boolean isCellEditable(int row, int column)	{
+				return false;
+			}
+		});
 		foodList.getColumnModel().getColumn(0).setPreferredWidth(200);
 		JScrollPane scrollTable = new JScrollPane(foodList);
 		scrollTable.setBounds(25, 450, 750, 250);
