@@ -73,6 +73,7 @@ public class ViewRestaurant extends JPanel {
 				sb.append(rs.getString("TimeOpen") + " - ");
 				sb.append(rs.getString("TimeClose"));
 				sb.append("\n");
+				//McDonalds, SoHi, papa johns, fiest charra, sushi nara, krishna, steinkeller all have no available times
 			}
 			System.out.println(sb.toString());
 		}catch(Exception e){System.out.println("BlahLBalgh");};
