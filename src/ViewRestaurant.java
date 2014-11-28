@@ -88,7 +88,7 @@ public class ViewRestaurant extends JPanel {
 		StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_CENTER);
 		availability.setParagraphAttributes(attribs, true);
 		availability.setText(sb.toString());     
-		availability.setBounds(400, 50, 300, 300);
+		availability.setBounds(400, 50, 300, 150);
 		availability.setBackground(new Color(255, 255, 255, 0));
 		availability.setEditable(false);
 		this.add(availability);
@@ -173,7 +173,9 @@ public class ViewRestaurant extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
+			String[] row = {"Hello", "Hello", "Hello", "Hello", "Hello", "Hello"};
+			model.addRow(row);
 			
 		}
 		
