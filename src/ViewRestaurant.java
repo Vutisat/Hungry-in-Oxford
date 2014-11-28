@@ -155,7 +155,15 @@ public class ViewRestaurant extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
+			String food = (String) list.getSelectedValue();
+			ResultSet rs = null;
+			db = new JDBC();
+			try	{
+				rs = db.getFoodItemInfo(name, food);
+				String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs")};
+				model.addRow(row);
+			}catch(Exception z){z.printStackTrace();};
 		}
 	}
 	
