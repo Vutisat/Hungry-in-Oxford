@@ -31,8 +31,11 @@ public class HioGui extends JPanel {
 		btn1.addActionListener(br);
 		
 		//App Description
-		//NORRRRRRRRAAAAAAAAAAAAAAAAAAAAAAA PUT YOUR DESCRIPTION HEEEEEEEEEEEEEEEERRRRRRRRRRRREEEEEEEEEEEEEEEEE%@@@@@@@#@$%@#$%@#$%@#$%@#$%*(@)#&*@)!(@&#^%()!&@#$%_()!&@)(#%&!)(@#&%)!(@#&%)(@#*$%
-		String text = "NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA NORA PUT YOUR DESCRIPTION Hqwer qwer qwer qwer qwer qwer qwer qwer qwer qwer aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+		String text = "New to Miami?  In Oxford for the weekend?  Just looking for some good food? \n
+Hungry in Oxford is your answer!  Hungry in Oxford allows you to search the top \n
+restaurants in Oxford to find exactly what you are looking for! Search by restaurant type \n
+or view all restaurants.  Look up menu items, hours, locations, and more.  Everything \n
+you could possibly need, right here at Hungry in Oxford!";
 		JTextPane descrip = new JTextPane();
 		 try {
 	            SimpleAttributeSet attribs = new SimpleAttributeSet();
