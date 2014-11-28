@@ -176,6 +176,23 @@ public class ViewRestaurant extends JPanel {
 		}
 	}
 	
+	public class AllFood implements ActionListener	{
+		//what are we going to do about drinks that don't have any nutritional info? not include them in the list?
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
+			ResultSet rs = null;
+			db = new JDBC();
+			try	{
+				rs = db.getFoodItemInfo(name);
+				while(rs.next())	{
+					String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs")};
+					model.addRow(row);
+				}
+			}catch(Exception z){z.printStackTrace();};
+		}
+	}
+	
 	public class RemoveFood implements MouseListener	{
 
 		@Override
@@ -211,29 +228,11 @@ public class ViewRestaurant extends JPanel {
 		}
 	}
 	
-	public class AllFood implements ActionListener	{
-		//what are we going to do about drinks that don't have any nutritional info? not include them in the list?
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
-			ResultSet rs = null;
-			db = new JDBC();
-			try	{
-				rs = db.getFoodItemInfo(name);
-				while(rs.next())	{
-					String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs")};
-					model.addRow(row);
-				}
-			}catch(Exception z){z.printStackTrace();};
-		}
-	}
-	
 	public class ListListener implements MouseListener	{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			repaint();
-			
 		}
 
 		@Override
@@ -259,6 +258,5 @@ public class ViewRestaurant extends JPanel {
 			// TODO Auto-generated method stub
 			
 		}
-		
 	}
 }
