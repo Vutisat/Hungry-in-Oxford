@@ -68,7 +68,7 @@ public class JDBC {
 	public ResultSet getAvailability(String rname) {
 		ResultSet rs = null;
 		try {
-			rs = this.statement.executeQuery("SELECT * FROM Availability WHERE rname = " + "\"" + rname + "\"");
+			rs = this.statement.executeQuery("SELECT DayOpen, TimeOpen, TimeClose FROM Availability WHERE rname = " + "\"" + rname + "\"");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
