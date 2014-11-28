@@ -92,6 +92,22 @@ public class JDBC {
 		return rs;
 	}
 	
+	public ResultSet getFoodItemInfo(String rest, String food)	{
+		ResultSet rs = null;	
+		try	{
+			rs = this.statement.executeQuery("SELECT FoodItems.name, Calories, Fat, Sugar, Sodium, Carbs "
+											+ "FROM FoodItems, NutritionalValues "
+											+ "WHERE FoodItems.FId = NutritionalValues.FId "
+											+ "AND RName = " + "\"" + rest + "\""
+											+ "AND FoodItems.name = " + "\"" + food + "\"");
+		}catch(Exception e)	{
+			e.printStackTrace();
+			System.out.println("ugh it didn't work");
+		}
+		
+		return rs;
+	}
+	
 	public void closeDb()	{
 		try {
 			connection.close();
