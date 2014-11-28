@@ -157,10 +157,15 @@ public class ViewRestaurant extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
 			String food = (String) list.getSelectedValue();
+			StringBuilder sb = new StringBuilder(food);
+			if(food.contains("\""))	{
+				int index = food.indexOf("\"");
+				sb.insert(index, "\"");
+			}
 			ResultSet rs = null;
 			db = new JDBC();
 			try	{
-				rs = db.getFoodItemInfo(name, food);
+				rs = db.getFoodItemInfo(name, sb.toString());
 				String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs")};
 				model.addRow(row);
 			}catch(Exception z){z.printStackTrace();};
