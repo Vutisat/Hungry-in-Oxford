@@ -120,7 +120,6 @@ public class ViewRestaurant extends JPanel {
 		DefaultTableModel tableData = new DefaultTableModel(columnNames, 0);
 		foodList = new JTable(tableData);
 		foodList.getColumnModel().getColumn(0).setPreferredWidth(200);
-		foodList.setEnabled(false);
 		JScrollPane scrollTable = new JScrollPane(foodList);
 		scrollTable.setBounds(25, 450, 750, 250);
 		this.add(scrollTable);
@@ -176,7 +175,10 @@ public class ViewRestaurant extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
+			for(int i = 0; i < foodList.getRowCount(); i ++)	{
+				
+			}
 		}
 	}
 	
