@@ -105,7 +105,7 @@ public class ViewRestaurant extends JPanel {
 		remove.setBounds(350, 325, 150, 25);
 		remove.setFont(new Font("Arial", Font.PLAIN, 11));
 		RemoveFood rf = new RemoveFood();
-		remove.addActionListener(rf);
+		remove.addMouseListener(rf);
 		this.add(remove);
 		
 		//View all food
@@ -117,7 +117,6 @@ public class ViewRestaurant extends JPanel {
 		
 		//Table of food items with nutritional info
 		String[] columnNames = {"Food Item", "Calories", "Fat", "Sugar", "Sodium", "Carbs"};
-		//DefaultTableModel tableData = new DefaultTableModel(columnNames, 0);
 		foodList = new JTable();
 		foodList.setModel(new DefaultTableModel(columnNames, 0){
 			@Override
@@ -177,14 +176,38 @@ public class ViewRestaurant extends JPanel {
 		}
 	}
 	
-	public class RemoveFood implements ActionListener	{
+	public class RemoveFood implements MouseListener	{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void mouseClicked(MouseEvent e) {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
-			for(int i = 0; i < foodList.getRowCount(); i ++)	{
-				
-			}
+			try{
+				model.removeRow(foodList.getSelectedRow());
+			} catch(Exception z){};
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
 	}
 	
