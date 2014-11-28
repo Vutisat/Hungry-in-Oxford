@@ -24,6 +24,7 @@ public class ViewRestaurant extends JPanel {
 	public String name;
 	static JFrame frame;
 	private JButton btn1;
+	private JList list;
 	JDBC db;
 	
 	//title.setBounds(x, y, width, height);
@@ -55,7 +56,7 @@ public class ViewRestaurant extends JPanel {
 			while(rs.next())	{
 				listModel.addElement(rs.getString("name"));
 			}
-			JList list = new JList(listModel);
+			list = new JList(listModel);
 			list.setBackground(new Color(255, 255, 255, 0));
 			list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			ListResponder lr = new ListResponder();
@@ -87,6 +88,16 @@ public class ViewRestaurant extends JPanel {
 		availability.setBackground(new Color(255, 255, 255, 0));
 		availability.setEditable(false);
 		this.add(availability);
+		
+		//Add food to table button
+		JButton add = new JButton("Add food to table");
+		add.setBounds(350, 225, 150, 25);
+		this.add(add);
+		
+		//Delete food from table button
+		JButton remove = new JButton("Remove food from table");
+		add.setBounds(350, 225, 150, 25);
+		this.add(add);
 		
 		//Frame to show
 		frame = new JFrame("Restaurant");
