@@ -154,9 +154,7 @@ public class ViewRestaurant extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			
 		}
-		
 	}
 	
 	public class RemoveFood implements ActionListener	{
@@ -164,9 +162,7 @@ public class ViewRestaurant extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			
 		}
-		
 	}
 	
 	public class AllFood implements ActionListener	{
@@ -174,11 +170,16 @@ public class ViewRestaurant extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
-			String[] row = {"Hello", "Hello", "Hello", "Hello", "Hello", "Hello"};
-			model.addRow(row);
-			
+			ResultSet rs = null;
+			db = new JDBC();
+			try	{
+				rs = db.getFoodAndDrinkItemInfo(name);
+				while(rs.next())	{
+					String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs")};
+					model.addRow(row);
+				}
+			}catch(Exception z){z.printStackTrace();};
 		}
-		
 	}
 	
 	public class ListListener implements MouseListener	{
