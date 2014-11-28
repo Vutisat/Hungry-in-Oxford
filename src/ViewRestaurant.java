@@ -77,7 +77,6 @@ public class ViewRestaurant extends JPanel {
 				//McDonalds, SoHi, papa johns, fiest charra, sushi nara, krishna, steinkeller all have no available times
 			}
 		}catch(Exception e){System.out.println("BlahLBalgh");};
-		
 		db.closeDb();	
 		JTextPane availability = new JTextPane();	 
 		SimpleAttributeSet attribs = new SimpleAttributeSet();
@@ -88,9 +87,6 @@ public class ViewRestaurant extends JPanel {
 		availability.setBackground(new Color(255, 255, 255, 0));
 		availability.setEditable(false);
 		this.add(availability);
-			
-		System.out.println(sb.toString());
-		
 		
 		//Frame to show
 		frame = new JFrame("Restaurant");
