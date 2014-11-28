@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -96,8 +97,9 @@ public class ViewRestaurant extends JPanel {
 		
 		//Delete food from table button
 		JButton remove = new JButton("Remove food from table");
-		add.setBounds(350, 225, 150, 25);
-		this.add(add);
+		remove.setBounds(350, 275, 150, 25);
+		remove.setFont(new Font("Arial", Font.PLAIN, 11));
+		this.add(remove);
 		
 		//Frame to show
 		frame = new JFrame("Restaurant");
