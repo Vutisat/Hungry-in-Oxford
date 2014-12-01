@@ -31,6 +31,8 @@ public class AddReview extends JPanel  {
 		btn1  = new JButton("Submit");
 		btn1.setBounds(20, 75, 150, 30);
 		this.add(btn1);
+		ButtonResponder br = new ButtonResponder();
+		btn1.addActionListener(br);
 		
 		//Box for review
 		review = new JTextArea();
@@ -60,11 +62,8 @@ public class AddReview extends JPanel  {
 			if(e.getSource() == btn1)	{
 				String descrip = review.getText();
 				int num = ratings.getSelectedIndex() + 1;
-				
-				
 				System.out.println(descrip);
 				System.out.println(num);
-				//if()
 			}
 			repaint();
 		}
