@@ -30,7 +30,7 @@ import javax.swing.text.StyleConstants;
 public class ViewRestaurant extends JPanel {
 	public String name;
 	static JFrame frame;
-	private JButton btn1;
+	private JButton btn1, btn2;
 	private JList list;
 	private JTable foodList;
 	JDBC db;
@@ -150,6 +150,12 @@ public ViewRestaurant(String str) {
 		frame.setVisible(true);
 		frame.setResizable(false);
 
+		//Add Review Button
+		btn2 = new JButton("Review this restaurant");
+		btn2.setFont(new Font("Arial", Font.PLAIN, 11));
+		btn2.setBounds(625, 225, 150, 25);
+		this.add(btn2);
+		
 		// Image to show
 		BufferedImage myPicture = null;
 		try {
@@ -174,6 +180,10 @@ public ViewRestaurant(String str) {
 			if (e.getSource() == btn1) {
 				ViewAllRestuarants vr = new ViewAllRestuarants();
 				CloseFrame();
+			}
+			
+			if (e.getSource() == btn2)	{
+				
 			}
 			repaint();
 		}
