@@ -155,6 +155,8 @@ public ViewRestaurant(String str) {
 		btn2.setFont(new Font("Arial", Font.PLAIN, 11));
 		btn2.setBounds(625, 225, 150, 25);
 		this.add(btn2);
+		ButtonResponder br2 = new ButtonResponder();
+		btn2.addActionListener(br2);
 		
 		// Image to show
 		BufferedImage myPicture = null;
@@ -183,7 +185,7 @@ public ViewRestaurant(String str) {
 			}
 			
 			if (e.getSource() == btn2)	{
-				
+				AddReview ar = new AddReview(name);
 			}
 			repaint();
 		}
