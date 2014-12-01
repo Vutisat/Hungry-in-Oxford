@@ -7,9 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.ResultSet;
 
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -124,7 +128,7 @@ public ViewRestaurant(String str) {
 
 		// Table of food items with nutritional info
 		String[] columnNames = { "Food Item", "Calories", "Fat", "Sugar",
-				"Sodium", "Carbs" };
+				"Sodium", "Carbs", "Price" };
 		foodList = new JTable();
 		foodList.setModel(new DefaultTableModel(columnNames, 0) {
 			@Override
@@ -190,7 +194,7 @@ public ViewRestaurant(String str) {
 			db = new JDBC();
 			try	{
 				rs = db.getFoodItemInfo(name, sb.toString());
-				String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs")};
+				String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs"), rs.getString("Price")};
 				model.addRow(row);
 			}catch(Exception z){z.printStackTrace();};
 		}
