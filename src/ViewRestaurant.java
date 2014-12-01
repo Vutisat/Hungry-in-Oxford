@@ -1,7 +1,4 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,14 +27,14 @@ import javax.swing.text.StyleConstants;
 public class ViewRestaurant extends JPanel {
 	public String name;
 	static JFrame frame;
-	private JButton btn1, btn2;
+	private JButton btn1, btn2, btn3;
 	private JList list;
 	private JTable foodList;
 	JDBC db;
-	
-	//title.setBounds(x, y, width, height);
 
-public ViewRestaurant(String str) {
+	// title.setBounds(x, y, width, height);
+
+	public ViewRestaurant(String str) {
 		super();
 		this.setLayout(null);
 		this.name = str;
@@ -150,14 +147,21 @@ public ViewRestaurant(String str) {
 		frame.setVisible(true);
 		frame.setResizable(false);
 
-		//Add Review Button
+		// Add Review Button
 		btn2 = new JButton("Review this restaurant");
 		btn2.setFont(new Font("Arial", Font.PLAIN, 11));
 		btn2.setBounds(625, 225, 150, 25);
 		this.add(btn2);
 		ButtonResponder br2 = new ButtonResponder();
 		btn2.addActionListener(br2);
-		
+
+		// Add View Review Button
+		btn3 = new JButton("View Reviews");
+		btn3.setBounds(625, 275, 150, 25);
+		this.add(btn3);
+		ButtonResponder br3 = new ButtonResponder();
+		btn3.addActionListener(br3);
+
 		// Image to show
 		BufferedImage myPicture = null;
 		try {
@@ -183,88 +187,107 @@ public ViewRestaurant(String str) {
 				ViewAllRestuarants vr = new ViewAllRestuarants();
 				CloseFrame();
 			}
-			
-			if (e.getSource() == btn2)	{
+
+			if (e.getSource() == btn2) {
 				AddReview ar = new AddReview(name);
+			}
+			if (e.getSource() == btn3) {
+				ViewReviews vr = new ViewReviews(name);
 			}
 			repaint();
 		}
 	}
-	
-	public class AddFood implements ActionListener	{
+
+	public class AddFood implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
 			String food = (String) list.getSelectedValue();
 			StringBuilder sb = new StringBuilder(food);
-			if(food.contains("\""))	{
+			if (food.contains("\"")) {
 				int index = food.indexOf("\"");
 				sb.insert(index, "\"");
 			}
 			ResultSet rs = null;
 			db = new JDBC();
-			try	{
+			try {
 				rs = db.getFoodItemInfo(name, sb.toString());
-				String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs"), rs.getString("Price")};
+				String[] row = { rs.getString("name"),
+						rs.getString("Calories"), rs.getString("Fat"),
+						rs.getString("Sugar"), rs.getString("Sodium"),
+						rs.getString("Carbs"), rs.getString("Price") };
 				model.addRow(row);
-			}catch(Exception z){z.printStackTrace();};
+			} catch (Exception z) {
+				z.printStackTrace();
+			}
+			;
 		}
 	}
-	
-	public class AllFood implements ActionListener	{
-		//what are we going to do about drinks that don't have any nutritional info? not include them in the list? should price go in this table too?
+
+	public class AllFood implements ActionListener {
+		// what are we going to do about drinks that don't have any nutritional
+		// info? not include them in the list? should price go in this table
+		// too?
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
 			ResultSet rs = null;
 			db = new JDBC();
-			try	{
+			try {
 				rs = db.getFoodItemInfo(name);
-				while(rs.next())	{
-					String[] row = {rs.getString("name"), rs.getString("Calories"), rs.getString("Fat"), rs.getString("Sugar"), rs.getString("Sodium"), rs.getString("Carbs")};
+				while (rs.next()) {
+					String[] row = { rs.getString("name"),
+							rs.getString("Calories"), rs.getString("Fat"),
+							rs.getString("Sugar"), rs.getString("Sodium"),
+							rs.getString("Carbs") };
 					model.addRow(row);
 				}
-			}catch(Exception z){z.printStackTrace();};
+			} catch (Exception z) {
+				z.printStackTrace();
+			}
+			;
 		}
 	}
-	
-	public class RemoveFood implements MouseListener	{
+
+	public class RemoveFood implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
-			try{
+			try {
 				model.removeRow(foodList.getSelectedRow());
-			} catch(Exception z){};
+			} catch (Exception z) {
+			}
+			;
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 	}
-	
-	public class ListListener implements MouseListener	{
+
+	public class ListListener implements MouseListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -274,25 +297,25 @@ public ViewRestaurant(String str) {
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			
+
 		}
 	}
 }
