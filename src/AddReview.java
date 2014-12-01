@@ -68,6 +68,7 @@ public class AddReview extends JPanel  {
 				db.insertReview(num, descrip, name);
 				System.out.println(descrip);
 				System.out.println(num);
+				CloseFrame();
 			}
 			repaint();
 		}
