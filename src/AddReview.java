@@ -16,9 +16,11 @@ public class AddReview extends JPanel  {
 	JButton btn1;
 	JTextArea review;
 	JComboBox ratings;
+	String name;
 	
 	public AddReview(String name)	{
 		super();
+		this.name = name;
 		this.setLayout(null);
 		
 		// Combo box for ratings
@@ -60,8 +62,10 @@ public class AddReview extends JPanel  {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == btn1)	{
+				db = new JDBC();
 				String descrip = review.getText();
 				int num = ratings.getSelectedIndex() + 1;
+				db.insertReview(num, descrip, name);
 				System.out.println(descrip);
 				System.out.println(num);
 			}
