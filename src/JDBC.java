@@ -108,6 +108,16 @@ public class JDBC {
 		return rs;
 	}
 	
+	public void insertReview(int rating, String review, String RName)	{
+		try{
+			String rate = Integer.toString(rating);
+			this.statement.executeUpdate("INSERT INTO Reviews VALUES (" + "\"" +RName + "\"" + ", " + rate + ", " + "\"" + review + "\"" + ");");
+		}catch(Exception e )	{
+			e.printStackTrace();
+			System.out.println("ugh it didn't work");
+		}
+	}
+	
 	public void closeDb()	{
 		try {
 			connection.close();
