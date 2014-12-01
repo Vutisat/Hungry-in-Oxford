@@ -1,11 +1,17 @@
-import java.awt.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
@@ -14,8 +20,8 @@ public class HioGui extends JPanel {
 	private JButton btn1;
 	JDBC db;
 
-	//title.setBounds(x, y, width, height);
-	
+	// title.setBounds(x, y, width, height);
+
 	public HioGui() {
 		super();
 		this.setLayout(null);
@@ -78,21 +84,24 @@ public class HioGui extends JPanel {
 	private void CloseFrame() {
 		frame.dispose();
 	}
-	
-	public static void main(String[] args) throws Exception, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-		//UIManager.installLookAndFeel("SeaGlass", "com.seaglasslookandfeel.SeaGlassLookAndFeel");
-        //UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
+
+	public static void main(String[] args) throws Exception,
+			InstantiationException, IllegalAccessException,
+			UnsupportedLookAndFeelException {
+		// UIManager.installLookAndFeel("SeaGlass",
+		// "com.seaglasslookandfeel.SeaGlassLookAndFeel");
+		// UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
 		HioGui start = new HioGui();
 	}
-	
+
 	public class ButtonResponder implements ActionListener {
-		
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == btn1) {
 				// db.main(null);
 				ViewAllRestuarants vr = new ViewAllRestuarants();
-				//vr.main(null);
+				// vr.main(null);
 				vr.setVisible(true);
 				CloseFrame();
 			}
