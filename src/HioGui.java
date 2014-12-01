@@ -17,48 +17,59 @@ public class HioGui extends JPanel {
 		super();
 		this.setLayout(null);
 
-		//Title
+		// Title
 		JLabel title = new JLabel("Hungry in Oxford", JLabel.CENTER);
 		title.setBounds(0, 0, 400, 50);
 		title.setFont(title.getFont().deriveFont(32f));
 		this.add(title);
-		
-		//View Restaurants
+
+		// View Restaurants
 		btn1 = new JButton("View All Restaurants");
-		btn1.setBounds(75, 100, 250, 30);
+		btn1.setBounds(75, 225, 250, 30);
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
-		
-		//App Description
-		String text = "New to Miami?  In Oxford for the weekend?  Just looking for some good food? \n " +
-				"Hungry in Oxford is your answer! Hungry in Oxford allows you to search the top \n " +
-				"restaurants in Oxford to find exactly what you are looking for! Search by restaurant type \n" +
-				"or view all restaurants.  Look up menu items, hours, locations, and more.  Everything \n" +
-				"you could possibly need, right here at Hungry in Oxford!";
+
+		// App Description
+		String text = "New to Miami?  In Oxford for the weekend?  Just looking for some good food? \n "
+				+ "Hungry in Oxford is your answer! Hungry in Oxford allows you to search the top \n "
+				+ "restaurants in Oxford to find exactly what you are looking for! Search by restaurant type \n"
+				+ "or view all restaurants.  Look up menu items, hours, locations, and more.  Everything \n"
+				+ "you could possibly need, right here at Hungry in Oxford!";
 		JTextPane descrip = new JTextPane();
-		 try {
-	            SimpleAttributeSet attribs = new SimpleAttributeSet();
-	            StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_CENTER);
-	            descrip.setParagraphAttributes(attribs, true);
-	            descrip.setText(text);
-	        }
-	        catch (Exception ex) {
-	            ex.printStackTrace();
-	        }
-		descrip.setBounds(50, 200, 300, 300);
+		try {
+			SimpleAttributeSet attribs = new SimpleAttributeSet();
+			StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_CENTER);
+			descrip.setParagraphAttributes(attribs, true);
+			descrip.setText(text);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		descrip.setBounds(50, 275, 300, 300);
 		descrip.setBackground(new Color(255, 255, 255, 0));
 		descrip.setEditable(false);
 		this.add(descrip);
-		
-		//Frame to show
+
+		// Frame to show
 		frame = new JFrame("Hungry In Oxford");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
-		frame.setBounds(0, 0, 400, 400);
+		frame.setBounds(0, 0, 400, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);
+
+		// Image to show
+		BufferedImage myPicture = null;
+		try {
+			myPicture = ImageIO.read(getClass().getResource(
+					"/images/HIOLogo.jpg"));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		JLabel headerImage = new JLabel(new ImageIcon(myPicture));
+		headerImage.setBounds(100, 60, 200, 150);
+		this.add(headerImage);
 	}
 
 	private void CloseFrame() {
