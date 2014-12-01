@@ -33,31 +33,31 @@ public class ViewRestaurant extends JPanel {
 	
 	//title.setBounds(x, y, width, height);
 
-	public ViewRestaurant(String str) {
+public ViewRestaurant(String str) {
 		super();
 		this.setLayout(null);
 		this.name = str;
-		
-		//Title
+
+		// Title
 		JLabel title = new JLabel(str, JLabel.CENTER);
 		title.setBounds(200, 0, 700, 50);
 		title.setFont(title.getFont().deriveFont(32f));
 		this.add(title);
-		
-		//Back button
+
+		// Back button
 		btn1 = new JButton("Back");
-		btn1.setBounds(700, 725, 75, 30);
+		btn1.setBounds(5, 5, 75, 30);
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
-		
-		//Create list of food items
+
+		// Create list of food items
 		ResultSet rs = null;
-		try	{
+		try {
 			db = new JDBC();
 			rs = db.getRestaurantFoodAndDrink(str);
 			DefaultListModel listModel = new DefaultListModel();
-			while(rs.next())	{
+			while (rs.next()) {
 				listModel.addElement(rs.getString("name"));
 			}
 			list = new JList(listModel);
@@ -68,59 +68,67 @@ public class ViewRestaurant extends JPanel {
 			JScrollPane scroll = new JScrollPane(list);
 			scroll.setBounds(25, 225, 300, 200);
 			this.add(scroll);
-		}catch(Exception e){System.out.println("SQL Statement Failed.. probably");};
-		
-		//Availability of restaurants
+		} catch (Exception e) {
+			System.out.println("SQL Statement Failed.. probably");
+		}
+		;
+
+		// Availability of restaurants
 		rs = db.getAvailability(name);
 		StringBuilder sb = new StringBuilder();
-		try{
-			while(rs.next())	{
+		try {
+			while (rs.next()) {
 				sb.append(rs.getString("DayOpen") + " ");
 				sb.append(rs.getString("TimeOpen") + " - ");
 				sb.append(rs.getString("TimeClose"));
 				sb.append("\n");
-				//McDonalds, SoHi, papa johns, fiest charra, sushi nara, krishna, steinkeller all have no available times
+				// McDonalds, SoHi, papa johns, fiest charra, sushi nara,
+				// krishna, steinkeller all have no available times
 			}
-		}catch(Exception e){System.out.println("BlahLBalgh");};
-		db.closeDb();	
-		JTextPane availability = new JTextPane();	 
+		} catch (Exception e) {
+			System.out.println("BlahLBalgh");
+		}
+		;
+		db.closeDb();
+		JTextPane availability = new JTextPane();
 		SimpleAttributeSet attribs = new SimpleAttributeSet();
 		StyleConstants.setAlignment(attribs, StyleConstants.ALIGN_CENTER);
 		availability.setParagraphAttributes(attribs, true);
-		availability.setText(sb.toString());     
+		availability.setText(sb.toString());
 		availability.setBounds(400, 50, 300, 150);
 		availability.setBackground(new Color(255, 255, 255, 0));
 		availability.setEditable(false);
 		this.add(availability);
-		
-		//Add food to table button
+
+		// Add food to table button
 		JButton add = new JButton("Add food to table");
 		add.setBounds(350, 275, 150, 25);
 		AddFood af = new AddFood();
 		add.addActionListener(af);
 		this.add(add);
-		
-		//Delete food from table button
+
+		// Delete food from table button
 		JButton remove = new JButton("Remove food from table");
 		remove.setBounds(350, 400, 150, 25);
 		remove.setFont(new Font("Arial", Font.PLAIN, 11));
 		RemoveFood rf = new RemoveFood();
 		remove.addMouseListener(rf);
 		this.add(remove);
-		
-		//View all food
+
+		// View all food
 		JButton allFood = new JButton("View all food");
 		allFood.setBounds(350, 225, 150, 25);
 		AllFood allF = new AllFood();
 		allFood.addActionListener(allF);
 		this.add(allFood);
-		
-		//Table of food items with nutritional info
-		String[] columnNames = {"Food Item", "Calories", "Fat", "Sugar", "Sodium", "Carbs"};
+
+		// Table of food items with nutritional info
+		String[] columnNames = { "Food Item", "Calories", "Fat", "Sugar",
+				"Sodium", "Carbs" };
 		foodList = new JTable();
-		foodList.setModel(new DefaultTableModel(columnNames, 0){
+		foodList.setModel(new DefaultTableModel(columnNames, 0) {
 			@Override
-			public boolean isCellEditable(int row, int column)	{
+			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		});
@@ -128,8 +136,8 @@ public class ViewRestaurant extends JPanel {
 		JScrollPane scrollTable = new JScrollPane(foodList);
 		scrollTable.setBounds(25, 450, 750, 250);
 		this.add(scrollTable);
-		
-		//Frame to show
+
+		// Frame to show
 		frame = new JFrame("Restaurant");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
@@ -137,6 +145,18 @@ public class ViewRestaurant extends JPanel {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);
+
+		// Image to show
+		BufferedImage myPicture = null;
+		try {
+			myPicture = ImageIO.read(getClass().getResource(
+					"/images/" + name + ".jpg"));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		JLabel headerImage = new JLabel(new ImageIcon(myPicture));
+		headerImage.setBounds(0, 0, 200, 300);
+		this.add(headerImage);
 	}
 
 	private void CloseFrame() {
