@@ -216,17 +216,16 @@ public class ViewRestaurant extends JPanel {
 				int index = food.indexOf("\"");
 				sb.insert(index, "\"");
 			}
-			ResultSet rs = null;
 			db = new JDBC();
 			try {
-				rs = db.getFoodItemInfo(name, sb.toString());
+				ResultSet rs = db.getFoodItemInfo(name, sb.toString());
 				String[] row = { rs.getString("name"),
 						rs.getString("Calories"), rs.getString("Fat"),
 						rs.getString("Sugar"), rs.getString("Sodium"),
 						rs.getString("Carbs"), rs.getString("Price") };
 				model.addRow(row);
-			} catch (Exception z) {
-				z.printStackTrace();};
+			} catch (Exception z) {z.printStackTrace();};
+			db.closeDb();
 		}
 	}
 
@@ -237,10 +236,9 @@ public class ViewRestaurant extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
-			ResultSet rs = null;
 			db = new JDBC();
 			try {
-				rs = db.getFoodItemInfo(name);
+				ResultSet rs = db.getFoodItemInfo(name);
 				while (rs.next()) {
 					String[] row = { rs.getString("name"),
 							rs.getString("Calories"), rs.getString("Fat"),
@@ -249,6 +247,7 @@ public class ViewRestaurant extends JPanel {
 					model.addRow(row);
 				}
 			} catch (Exception z) {z.printStackTrace();};
+			db.closeDb();
 		}
 	}
 	
