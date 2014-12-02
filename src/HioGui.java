@@ -63,7 +63,7 @@ public class HioGui extends JPanel {
 		frame = new JFrame("Hungry In Oxford");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(this);
-		frame.setBounds(0, 0, 400, 500);
+		frame.setBounds(0, 0, 400, 600);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		frame.setResizable(false);
