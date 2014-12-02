@@ -114,6 +114,14 @@ public class ViewRestaurant extends JPanel {
 		RemoveFood rf = new RemoveFood();
 		remove.addMouseListener(rf);
 		this.add(remove);
+		
+		// Delete all food from table
+		JButton removeAll = new JButton("Remove all food");
+		removeAll.setBounds(350, 350, 150, 25);
+		removeAll.setFont(new Font("Arial", Font.PLAIN, 11));
+		RemoveAllFood raf = new RemoveAllFood();
+		removeAll.addActionListener(raf);
+		this.add(removeAll);
 
 		// View all food
 		JButton allFood = new JButton("View all food");
@@ -218,9 +226,7 @@ public class ViewRestaurant extends JPanel {
 						rs.getString("Carbs"), rs.getString("Price") };
 				model.addRow(row);
 			} catch (Exception z) {
-				z.printStackTrace();
-			}
-			;
+				z.printStackTrace();};
 		}
 	}
 
@@ -242,11 +248,21 @@ public class ViewRestaurant extends JPanel {
 							rs.getString("Carbs"), rs.getString("Price") };
 					model.addRow(row);
 				}
-			} catch (Exception z) {
-				z.printStackTrace();
-			}
-			;
+			} catch (Exception z) {z.printStackTrace();};
 		}
+	}
+	
+	public class RemoveAllFood implements ActionListener	{
+
+		public void actionPerformed(ActionEvent e) {
+			DefaultTableModel model = (DefaultTableModel) foodList.getModel();		
+			try {
+				for(int i = 0; i < model.getRowCount(); i++){
+					model.removeRow(i);
+				}
+			} catch (Exception z) {z.printStackTrace();};
+		}
+		
 	}
 
 	public class RemoveFood implements MouseListener {
@@ -256,9 +272,7 @@ public class ViewRestaurant extends JPanel {
 			DefaultTableModel model = (DefaultTableModel) foodList.getModel();
 			try {
 				model.removeRow(foodList.getSelectedRow());
-			} catch (Exception z) {
-			}
-			;
+			} catch (Exception z) {};
 		}
 
 		@Override
