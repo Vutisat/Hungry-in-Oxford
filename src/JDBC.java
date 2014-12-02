@@ -98,7 +98,7 @@ public class JDBC {
 		ResultSet rs = null;
 		try {
 			rs = this.statement
-					.executeQuery("SELECT FoodItems.name, Calories, Fat, Sugar, Sodium, Carbs FROM FoodItems, NutritionalValues WHERE FoodItems.FId = NutritionalValues.FId AND RName = "
+					.executeQuery("SELECT FoodItems.name, Calories, Fat, Sugar, Sodium, Carbs, Price FROM FoodItems, NutritionalValues WHERE FoodItems.FId = NutritionalValues.FId AND RName = "
 							+ "\"" + rest + "\"");
 		} catch (Exception e) {
 			e.printStackTrace();

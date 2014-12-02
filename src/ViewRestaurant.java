@@ -239,7 +239,7 @@ public class ViewRestaurant extends JPanel {
 					String[] row = { rs.getString("name"),
 							rs.getString("Calories"), rs.getString("Fat"),
 							rs.getString("Sugar"), rs.getString("Sodium"),
-							rs.getString("Carbs") };
+							rs.getString("Carbs"), rs.getString("Price") };
 					model.addRow(row);
 				}
 			} catch (Exception z) {
