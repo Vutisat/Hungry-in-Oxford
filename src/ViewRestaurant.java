@@ -67,10 +67,9 @@ public class ViewRestaurant extends JPanel {
 		this.add(avgScore);
 
 		// Create list of food items
-		rs = null;
+		rs = db.getRestaurantFoodAndDrink(str);;
 		try {
-			db = new JDBC();
-			rs = db.getRestaurantFoodAndDrink(str);
+
 			DefaultListModel listModel = new DefaultListModel();
 			while (rs.next()) {
 				listModel.addElement(rs.getString("name"));
