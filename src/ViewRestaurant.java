@@ -57,7 +57,6 @@ public class ViewRestaurant extends JPanel {
 		db = new JDBC();
 		ResultSet rs = db.getRestaurantFoodAndDrink(str);
 		try {
-
 			DefaultListModel listModel = new DefaultListModel();
 			while (rs.next()) {
 				listModel.addElement(rs.getString("name"));
