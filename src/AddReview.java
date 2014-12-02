@@ -72,6 +72,7 @@ public class AddReview extends JPanel {
 				String descrip = review.getText();
 				int num = ratings.getSelectedIndex() + 1;
 				db.insertReview(num, descrip, name);
+				db.closeDb();
 				CloseFrame();
 			}
 			repaint();
