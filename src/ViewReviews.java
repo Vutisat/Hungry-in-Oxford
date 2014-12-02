@@ -50,8 +50,6 @@ public class ViewReviews extends JPanel {
 		JScrollPane scrollTable = new JScrollPane(reviewList);
 		scrollTable.setBounds(25, 50, 650, 200);
 		DefaultTableModel model = (DefaultTableModel) reviewList.getModel();
-		rs = null;
-		db = new JDBC();
 		try {
 			rs = db.getReviews(name);
 			while (rs.next()) {
