@@ -29,12 +29,12 @@ public class ViewReviews extends JPanel {
 		ResultSet rs = db.getAverageRating(name);
 		JLabel avgScore = null;
 		try {
-			avgScore = new JLabel("("+ Integer.toString(rs.getInt(1)) + ")");
+			avgScore = new JLabel("Average Rating : "+ Integer.toString(rs.getInt(1)));
 		} catch (SQLException e2) {
 			e2.printStackTrace();
 		}
 		avgScore.setFont(new Font("Arial", Font.PLAIN, 30));
-		avgScore.setBounds(625, 0, 100, 50);
+		avgScore.setBounds(25, 0, 300, 50);
 		this.add(avgScore);
 		
 		// Table of reviews
