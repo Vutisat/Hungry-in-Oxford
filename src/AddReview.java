@@ -51,7 +51,7 @@ public class AddReview extends JPanel {
 
 		// Frame to show
 		frame = new JFrame(name);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.add(this);
 		frame.setBounds(0, 0, 700, 300);
 		frame.setLocationRelativeTo(null);
