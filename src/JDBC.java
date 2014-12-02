@@ -31,6 +31,7 @@ public class JDBC {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return rs;
 	}
 
@@ -43,6 +44,7 @@ public class JDBC {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return rs;
 	}
 
@@ -58,6 +60,7 @@ public class JDBC {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return rs;
 	}
 
@@ -70,6 +73,7 @@ public class JDBC {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return rs;
 	}
 
@@ -86,7 +90,7 @@ public class JDBC {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return rs;
 	}
 
@@ -99,7 +103,7 @@ public class JDBC {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return rs;
 	}
 
@@ -119,7 +123,7 @@ public class JDBC {
 			e.printStackTrace();
 			System.out.println("ugh it didn't work");
 		}
-
+		
 		return rs;
 	}
 
@@ -133,6 +137,7 @@ public class JDBC {
 			e.printStackTrace();
 			System.out.println("ugh it didn't work");
 		}
+		
 	}
 
 	public ResultSet getReviews(String rest) {
@@ -144,7 +149,7 @@ public class JDBC {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return rs;
 	}
 
@@ -157,7 +162,7 @@ public class JDBC {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		return rs;
 	}
 
