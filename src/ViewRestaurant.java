@@ -52,22 +52,10 @@ public class ViewRestaurant extends JPanel {
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
-		
-		//Add space for average rating
-		db = new JDBC();
-		ResultSet rs = db.getAverageRating(str);
-		JLabel avgScore = null;
-		try {
-			avgScore = new JLabel("("+ Integer.toString(rs.getInt(1)) + ")");
-		} catch (SQLException e2) {
-			e2.printStackTrace();
-		}
-		avgScore.setFont(new Font("Arial", Font.PLAIN, 30));
-		avgScore.setBounds(625, 0, 100, 50);
-		this.add(avgScore);
 
 		// Create list of food items
-		rs = db.getRestaurantFoodAndDrink(str);;
+		db = new JDBC();
+		ResultSet rs = db.getRestaurantFoodAndDrink(str);
 		try {
 
 			DefaultListModel listModel = new DefaultListModel();

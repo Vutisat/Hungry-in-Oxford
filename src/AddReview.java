@@ -17,6 +17,7 @@ public class AddReview extends JPanel {
 	JTextArea review;
 	JComboBox ratings;
 	String name;
+	
 
 	public AddReview(String name) {
 		super();

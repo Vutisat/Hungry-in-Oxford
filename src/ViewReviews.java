@@ -1,4 +1,6 @@
+import java.awt.Font;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 public class ViewReviews extends JPanel {
 
 	JFrame frame;
+	JDBC db;
 
 	public ViewReviews(String name) {
 		super();
@@ -21,6 +24,19 @@ public class ViewReviews extends JPanel {
 		title.setFont(title.getFont().deriveFont(32f));
 		this.add(title);
 
+		//Add space for average rating
+		db = new JDBC();
+		ResultSet rs = db.getAverageRating(name);
+		JLabel avgScore = null;
+		try {
+			avgScore = new JLabel("("+ Integer.toString(rs.getInt(1)) + ")");
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+		}
+		avgScore.setFont(new Font("Arial", Font.PLAIN, 30));
+		avgScore.setBounds(625, 0, 100, 50);
+		this.add(avgScore);
+		
 		// Table of reviews
 		String[] columnNames = { "Rating", "Review" };
 		JTable reviewList = new JTable();
@@ -34,8 +50,8 @@ public class ViewReviews extends JPanel {
 		JScrollPane scrollTable = new JScrollPane(reviewList);
 		scrollTable.setBounds(25, 50, 650, 200);
 		DefaultTableModel model = (DefaultTableModel) reviewList.getModel();
-		ResultSet rs = null;
-		JDBC db = new JDBC();
+		rs = null;
+		db = new JDBC();
 		try {
 			rs = db.getReviews(name);
 			while (rs.next()) {
