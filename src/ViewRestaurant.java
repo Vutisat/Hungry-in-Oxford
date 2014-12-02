@@ -48,7 +48,7 @@ public class ViewRestaurant extends JPanel {
 
 		// Back button
 		btn1 = new JButton("Back");
-		btn1.setBounds(5, 5, 75, 30);
+		btn1.setBounds(20, 20, 75, 30);
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
