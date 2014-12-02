@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
@@ -51,9 +52,22 @@ public class ViewRestaurant extends JPanel {
 		this.add(btn1);
 		ButtonResponder br = new ButtonResponder();
 		btn1.addActionListener(br);
+		
+		//Add space for average rating
+		db = new JDBC();
+		ResultSet rs = db.getAverageRating(str);
+		JLabel avgScore = null;
+		try {
+			avgScore = new JLabel("("+ Integer.toString(rs.getInt(1)) + ")");
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+		}
+		avgScore.setFont(new Font("Arial", Font.PLAIN, 30));
+		avgScore.setBounds(625, 0, 100, 50);
+		this.add(avgScore);
 
 		// Create list of food items
-		ResultSet rs = null;
+		rs = null;
 		try {
 			db = new JDBC();
 			rs = db.getRestaurantFoodAndDrink(str);
@@ -71,8 +85,7 @@ public class ViewRestaurant extends JPanel {
 			this.add(scroll);
 		} catch (Exception e) {
 			System.out.println("SQL Statement Failed.. probably");
-		}
-		;
+		};
 
 		// Availability of restaurants
 		rs = db.getAvailability(name);
